@@ -1,14 +1,14 @@
 package com.techelevator.view;
 
-
 public class Product {
+
     private String slot_Location;
     private String product_Name;
     private String product_Price;
     private String product_Type;
-    private int product_Amount = 5;
+    private int product_Stock_Quantity = 5;
 
-    public Product (String slot_Location, String product_Name, String product_Price, String product_Type) {
+    public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
         this.slot_Location = slot_Location;
         this.product_Name = product_Name;
         this.product_Price = product_Price;
@@ -31,7 +31,7 @@ public class Product {
         return product_Type;
     }
 
-    public int getProduct_Amount() {
-        return product_Amount;
+    public int getProduct_Stock_Quantity() {
+        return product_Stock_Quantity;
     }
 }

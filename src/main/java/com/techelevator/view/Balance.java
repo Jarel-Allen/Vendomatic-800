@@ -2,7 +2,7 @@ package com.techelevator.view;
 
 import java.math.BigDecimal;
 
-public class Customer_Balance {
+public class Balance {
     private BigDecimal balance = BigDecimal.valueOf(0).setScale(2);
 
     public void add(int money) {

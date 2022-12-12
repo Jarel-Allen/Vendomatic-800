@@ -3,7 +3,6 @@ package com.techelevator.view;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Menu {
@@ -44,7 +43,6 @@ public class Menu {
 
 	private void displayMenuOptions(Object[] options) {
 		out.println();
-
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
 			out.println(optionNum + ") " + options[i]);
@@ -53,34 +51,11 @@ public class Menu {
 		out.flush();
 	}
 
-	public void Balance (Customer_Balance balance) {
-		System.out.println();
-		System.out.println("Enter the amount of money to feed: ");
+	// using menu user input to add balance to customer
+	public void balance (Balance customer_balance) {
+		Menu_Display.feed_Money_Display();
 		String userInput = in.nextLine();
 		int money = Integer.parseInt(userInput);
-		balance.add(money);
+		customer_balance.add(money);
 	}
-
-	public void welcomeDisplay() {
-		System.out.println();
-		System.out.println("=======================================");
-		System.out.println("Welcome to our Virtual Vending Machine!");
-		System.out.println("=======================================");
-		System.out.println();
-	}
-	public void exitDisplay() {
-		System.out.println();
-		System.out.println("=======================================");
-		System.out.println(" Exiting our Virtual Vending Machine!");
-		System.out.println("=======================================");
-	}
-
-	public void displayedItems(){
-		System.out.println();
-		System.out.println("===========================");
-		System.out.println(" Displaying Items by Type:");
-		System.out.println("===========================");
-		System.out.println();
-	}
-
 }
