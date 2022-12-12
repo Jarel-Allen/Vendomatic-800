@@ -86,6 +86,7 @@ public class VendingMachineCLI {
 				menu.balance(customer_Balance);
 			} else if (purchase_choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 				//displays a list of items with ID and cost
+				Menu_Display.purchase_Item_Sign();
 				Display_List.purchase_Items(file);
 			} else if (purchase_choice.equals(PURCHASE_OPTION_TRANSACTION)) {
 				break;

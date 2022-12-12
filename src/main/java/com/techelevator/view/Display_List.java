@@ -47,6 +47,6 @@ public class Display_List {
     public static void purchase_Items_List(Product item) {
         System.out.println("ID: " + item.getSlot_Location());
         System.out.println("Item: " + item.getProduct_Name());
-        System.out.println("Cost: " + item.getProduct_Price() + "\n");
+        System.out.println("Cost: $" + item.getProduct_Price() + "\n");
     }
 }
