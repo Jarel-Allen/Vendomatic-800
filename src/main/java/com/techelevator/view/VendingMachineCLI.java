@@ -31,7 +31,7 @@ public class VendingMachineCLI {
 				Menu_Display.display_Items_Sign();
 
 				//this is our displayed items as a list
-				Display_List.items(file);
+				Display_List.items(choice, file);
 
 				//this is our display menu options
 				display(choice, file);
@@ -87,12 +87,17 @@ public class VendingMachineCLI {
 			} else if (purchase_choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 				//displays a list of items with ID and cost
 				Menu_Display.purchase_Item_Sign();
-				Display_List.purchase_Items(file);
+				Display_List.items(purchase_choice, file);
+
 			} else if (purchase_choice.equals(PURCHASE_OPTION_TRANSACTION)) {
 				break;
 			}
 		}
 	}
-
-
+	public static String getMainMenuOptionDisplayItems() {
+		return MAIN_MENU_OPTION_DISPLAY_ITEMS;
+	}
+	public static String getPurchaseOptionSelectProduct() {
+		return PURCHASE_OPTION_SELECT_PRODUCT;
+	}
 }

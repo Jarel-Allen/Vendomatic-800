@@ -58,4 +58,9 @@ public class Menu {
 		int money = Integer.parseInt(userInput);
 		customer_balance.add(money);
 	}
+
+	public String customer_Id_Input () {
+		String userInput = in.nextLine();
+		return userInput;
+	}
 }

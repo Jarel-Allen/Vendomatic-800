@@ -35,6 +35,9 @@ public class Menu_Display {
         System.out.println();
     }
 
+    public static void slot_Id_Input_Sign(){
+        System.out.print("Please Enter The ID Code: ");
+    }
 
 
 }

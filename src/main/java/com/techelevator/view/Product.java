@@ -1,5 +1,8 @@
 package com.techelevator.view;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Product {
 
     private String slot_Location;
@@ -34,4 +37,5 @@ public class Product {
     public int getProduct_Stock_Quantity() {
         return product_Stock_Quantity;
     }
+
 }
