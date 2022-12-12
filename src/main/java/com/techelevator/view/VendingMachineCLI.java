@@ -34,11 +34,11 @@ public class VendingMachineCLI {
 				Display_List.items(file);
 
 				//this is our display menu options
-				display(choice);
+				display(choice, file);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				//this is our purchase menu options
-				purchase(choice);
+				purchase(choice, file);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
 				break;
@@ -55,21 +55,21 @@ public class VendingMachineCLI {
 		cli.run(file.getFile());
 	}
 	//-------------------------------------------------------------------------------------
-	//our while loops for the menus
-	public void display(String choice) {
-
+	//                                   Our Menu Loops
+	//-------------------------------------------------------------------------------------
+	public void display(String choice, String file) {
 		while(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 			//our display menu
 			String display_choice = (String) menu.getChoiceFromOptions(DISPLAY_ITEMS_OPTIONS);
 			if(display_choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				purchase(display_choice);
+				purchase(display_choice, file);
 				break;
 			} else if (display_choice.equals(DISPLAY_ITEMS_OPTION_MAIN_MENU)) {
 				break;
 			}
 		}
 	}
-	public void purchase(String choice) {
+	public void purchase(String choice, String file) {
 		Balance customer_Balance = new Balance();
 
 		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
@@ -82,12 +82,16 @@ public class VendingMachineCLI {
 			//our purchase menu
 			String purchase_choice = (String) menu.getChoiceFromOptions(PURCHASE_OPTIONS);
 			if(purchase_choice.equals(PURCHASE_OPTION_FEED_MONEY)) {
+				//allows customer to enter an amount
 				menu.balance(customer_Balance);
 			} else if (purchase_choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
-
+				//displays a list of items with ID and cost
+				Display_List.purchase_Items(file);
 			} else if (purchase_choice.equals(PURCHASE_OPTION_TRANSACTION)) {
 				break;
 			}
 		}
 	}
+
+
 }
