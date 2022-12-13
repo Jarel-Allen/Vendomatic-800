@@ -39,5 +39,20 @@ public class Menu_Display {
         System.out.print("Please Enter The ID Code: ");
     }
 
-
+    public static void chip_Display () {
+        System.out.println();
+        System.out.println("Crunch Crunch, Yum!");
+    }
+    public static void candy_Display () {
+        System.out.println();
+        System.out.println("Munch Munch, Yum!");
+    }
+    public static void drink_Display () {
+        System.out.println();
+        System.out.println("Glug Glug, Yum!");
+    }
+    public static void gum_Display () {
+        System.out.println();
+        System.out.println("Chew Chew, Yum!");
+    }
 }
