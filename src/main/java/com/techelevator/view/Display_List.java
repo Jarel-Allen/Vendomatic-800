@@ -35,7 +35,7 @@ public class Display_List {
     public static void display_Items(Product item, Stock_Amount amount) {
         System.out.println("Item: " + item.getProduct_Name());
         if (amount.getQuantity()==0) {
-            System.out.println("Out of Stock!" + "\n");
+            System.out.println("SOLD OUT" + "\n");
         } else {
             System.out.println("In-Stock: " + amount.getQuantity() + "\n");
         }
@@ -52,25 +52,26 @@ public class Display_List {
     public static void purchase_Item(Stock_Amount amount, Balance balance, Product item) {
         String price = item.getProduct_Price();
         BigDecimal price_value = BigDecimal.valueOf(Double.valueOf(price));
-        balance.subtract(price_value);
 
-        if (balance.getBalance().compareTo(price_value) >= 0) {
-            System.out.println();
-            System.out.println("Now Dispensing Your Item: " + item.getProduct_Name());
+        if (amount.getQuantity()==0){
+            Menu_Display.out_Of_Stock_Display();
+        } else if (amount.getQuantity() > 0) {
+            balance.subtract(price_value);
             amount.remove_Stock(1);
+            if (balance.getBalance().compareTo(price_value) >= 0) {
+                System.out.println();
+                System.out.println("Now Dispensing Your Item: " + item.getProduct_Name());
 
-            if(item.getProduct_Type().equals("Chip")) {
-                Menu_Display.chip_Display();
-            } else if(item.getProduct_Type().equals("Candy")) {
-                Menu_Display.candy_Display();
-            } else if(item.getProduct_Type().equals("Drink")) {
-                Menu_Display.drink_Display();
-            }else if(item.getProduct_Type().equals("Gum")) {
-                Menu_Display.gum_Display();
+                if(item.getProduct_Type().equals("Chip")) {
+                    Menu_Display.chip_Display();
+                } else if(item.getProduct_Type().equals("Candy")) {
+                    Menu_Display.candy_Display();
+                } else if(item.getProduct_Type().equals("Drink")) {
+                    Menu_Display.drink_Display();
+                }else if(item.getProduct_Type().equals("Gum")) {
+                    Menu_Display.gum_Display();
+                }
             }
         }
-
-
-
     }
 }

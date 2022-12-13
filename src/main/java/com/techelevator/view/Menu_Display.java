@@ -56,4 +56,9 @@ public class Menu_Display {
         System.out.println();
         System.out.println("Chew Chew, Yum!");
     }
+
+    public static void out_Of_Stock_Display() {
+        System.out.println();
+        System.out.println("This Item Is Currently Out Of Stock!");
+    }
 }
