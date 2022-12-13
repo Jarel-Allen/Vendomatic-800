@@ -8,23 +8,22 @@ import java.util.*;
 public class Display_List {
 
     //this is our file reader to display items as a list
-    public static void items(Balance balance, String choice,String file) {
+    public static void items(Balance balance, String choice, String file) {
         File fileInput = new File(file);
         try (Scanner dataInput = new Scanner(fileInput)) {
             while (dataInput.hasNextLine()) {
                 List<String> product_Info = Arrays.asList(dataInput.nextLine().split("\\|"));
-                Product product = new Product(product_Info.get(0), product_Info.get(1), product_Info.get(2), product_Info.get(3), 5);
-                Map<String, Integer> items = new HashMap<>();
-                items.put(product.getSlot_Location(), product.getProduct_Stock_Quantity());
+                Product product = new Product(product_Info.get(0), product_Info.get(1), product_Info.get(2), product_Info.get(3));
 
                 if(choice.equals(VendingMachineCLI.getMainMenuOptionDisplayItems())) {
-                    display_Items(items, product);
+                    display_Items(product);
                 } else if (choice.equals(VendingMachineCLI.getPurchaseOptionSelectProduct())) {
-                    purchase_Items_List(items, product);
+                    purchase_Items_List(product);
                 }
 
-                if (items.containsKey(choice)) {
-                    purchase_Item(product);
+                if (product.getSlot_Location().equals(choice)) {
+                    product.purchase_item(choice);
+                    purchase_Item(balance, product);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -33,33 +32,43 @@ public class Display_List {
     }
     //---------------------------------------------------------------------------------------------
     //this is our display list of items
-    public static void display_Items(Map<String, Integer> product, Product item) {
+    public static void display_Items(Product item) {
         System.out.println("Item: " + item.getProduct_Name());
-        if (product.values().equals(0)) {
+        if (item.getProduct_Stock_Quantity()==0) {
             System.out.println("Out of Stock!" + "\n");
         } else {
-            System.out.println("In-Stock: " + product.values() + "\n");
+            System.out.println("In-Stock: " + item.getProduct_Stock_Quantity() + "\n");
         }
     }
 
-    public static void purchase_Items_List(Map<String, Integer> product,Product item) {
-        System.out.println("ID: " + product.keySet());
+    public static void purchase_Items_List(Product item) {
+        System.out.println("ID: " + item.getSlot_Location());
         System.out.println("Item: " + item.getProduct_Name());
         System.out.println("Cost: $" + item.getProduct_Price() + "\n");
     }
 
     //---------------------------------------------------------------------------------------------
 
-    public static void purchase_Item(Product product) {
+    public static void purchase_Item(Balance balance, Product item) {
+        String price = item.getProduct_Price();
+        BigDecimal price_value = BigDecimal.valueOf(Double.valueOf(price));
+        balance.subtract(price_value);
+        if (balance.getBalance().compareTo(price_value) >= 0) {
+            System.out.println();
+            System.out.println("Now Dispensing Your Item: " + item.getProduct_Name());
 
-        if(product.getProduct_Type().equals("Chip")) {
-            Menu_Display.chip_Display();
-        } else if(product.getProduct_Type().equals("Candy")) {
-            Menu_Display.candy_Display();
-        } else if(product.getProduct_Type().equals("Drink")) {
-            Menu_Display.drink_Display();
-        }else if(product.getProduct_Type().equals("Gum")) {
-            Menu_Display.gum_Display();
+            if(item.getProduct_Type().equals("Chip")) {
+                Menu_Display.chip_Display();
+            } else if(item.getProduct_Type().equals("Candy")) {
+                Menu_Display.candy_Display();
+            } else if(item.getProduct_Type().equals("Drink")) {
+                Menu_Display.drink_Display();
+            }else if(item.getProduct_Type().equals("Gum")) {
+                Menu_Display.gum_Display();
+            }
         }
+
+
+
     }
 }

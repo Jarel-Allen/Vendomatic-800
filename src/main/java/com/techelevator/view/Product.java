@@ -9,21 +9,19 @@ public class Product {
     private String product_Name;
     private String product_Price;
     private String product_Type;
-    private int product_Stock_Quantity;
+    private int product_Stock_Quantity = 5;
 
-    public Product(String slot_Location, String product_Name, String product_Price, String product_Type, int product_Stock_Quantity) {
+    public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
         this.slot_Location = slot_Location;
         this.product_Name = product_Name;
         this.product_Price = product_Price;
         this.product_Type = product_Type;
-        this.product_Stock_Quantity = product_Stock_Quantity;
     }
 
     public void purchase_item(String userInput) {
         if (!userInput.equals(slot_Location)){
             System.out.println("This Code Does Not Exist!");
         }
-
         if (userInput.equals(slot_Location)){
             if(product_Stock_Quantity > 0) {
                 product_Stock_Quantity --;
