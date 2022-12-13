@@ -1,5 +1,8 @@
 package com.techelevator.view;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class VendingMachineCLI {
 	//List of our menu options
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
@@ -24,22 +27,23 @@ public class VendingMachineCLI {
 
 	public void run(String file) {
 		Menu_Display.welcome_Sign();
+		Stock_Amount amount = new Stock_Amount();
 		while (true) {
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			Balance customer_Balance = new Balance();
+			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				//this is our display sign on top
 				Menu_Display.display_Items_Sign();
 
 				//this is our displayed items as a list
-				Display_List.items(customer_Balance, choice, file);
+				Display_List.items(amount, customer_Balance, choice, file);
 
 				//this is our display menu options
-				display( customer_Balance, choice, file);
+				display(amount, customer_Balance, choice, file);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				//this is our purchase menu options
-				purchase(customer_Balance, choice, file);
+				purchase(amount, customer_Balance, choice, file);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
 				break;
@@ -58,19 +62,19 @@ public class VendingMachineCLI {
 	//-------------------------------------------------------------------------------------
 	//                                   Our Menu Loops
 	//-------------------------------------------------------------------------------------
-	public void display(Balance balance,String choice, String file) {
+	public void display(Stock_Amount amount, Balance balance,String choice, String file) {
 		while(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 			//our display menu
 			String display_choice = (String) menu.getChoiceFromOptions(DISPLAY_ITEMS_OPTIONS);
 			if(display_choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				purchase(balance, display_choice, file);
+				purchase(amount, balance, display_choice, file);
 				break;
 			} else if (display_choice.equals(DISPLAY_ITEMS_OPTION_MAIN_MENU)) {
 				break;
 			}
 		}
 	}
-	public void purchase(Balance balance, String choice, String file) {
+	public void purchase(Stock_Amount amount, Balance balance, String choice, String file) {
 
 
 		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
@@ -87,21 +91,21 @@ public class VendingMachineCLI {
 				menu.balance(balance);
 
 			} else if (purchase_choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
-				select_Purchase(balance, purchase_choice, file);
+				select_Purchase(amount, balance, purchase_choice, file);
 
 			} else if (purchase_choice.equals(PURCHASE_OPTION_TRANSACTION)) {
 				break;
 			}
 		}
 	}
-	public void select_Purchase(Balance balance, String choice, String file) {
+	public void select_Purchase(Stock_Amount amount, Balance balance, String choice, String file) {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 			//displays a list of items with ID and cost
 			Menu_Display.purchase_Item_Sign();
-			Display_List.items( balance, choice, file);
+			Display_List.items(amount, balance, choice, file);
 
 			Menu_Display.slot_Id_Input_Sign();
-			Display_List.items(balance, menu.customer_Id_Input(), file);
+			Display_List.items(amount, balance, menu.customer_Id_Input(), file);
 
 			break;
 		}
