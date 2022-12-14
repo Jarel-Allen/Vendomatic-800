@@ -22,7 +22,7 @@ public class Display_List{
             }
         }
     }
-    public static void item_purchaser(String choice, Balance balance){
+    public static void item_Purchaser(String choice, Balance balance){
         if(items_Grabber.get(choice)==null) {
             Menu_Display.code_Does_Not_Exist();
         } else {

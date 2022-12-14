@@ -9,10 +9,13 @@ public class VendingMachineCLI {
 	//-------------------------------------------------------------------------------------
 	private static final String DISPLAY_ITEMS_OPTION_MAIN_MENU = "Main Menu";
 	private static final String[] DISPLAY_ITEMS_OPTIONS = { MAIN_MENU_OPTION_PURCHASE, DISPLAY_ITEMS_OPTION_MAIN_MENU };
+
 	//-------------------------------------------------------------------------------------
 	private static final String PURCHASE_OPTION_FEED_MONEY = "Feed Money";
 	private static final String PURCHASE_OPTION_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_OPTION_TRANSACTION = "Finish Transaction";
+	private static final String PURCHASE_OPTION_GO_BACK = "Go Back";
+	private static final String[] PURCHASE_OPTION_BACK = {PURCHASE_OPTION_GO_BACK};
 	private static final String[] PURCHASE_OPTIONS = { PURCHASE_OPTION_FEED_MONEY, PURCHASE_OPTION_SELECT_PRODUCT, PURCHASE_OPTION_TRANSACTION };
 	//-------------------------------------------------------------------------------------
 	//our main programs
@@ -37,7 +40,7 @@ public class VendingMachineCLI {
 				Display_List.items_Displayer(choice);
 
 				//this is our display menu options
-				display(customer_Balance, choice, file);
+				display(customer_Balance, choice);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				//this is our purchase menu options
@@ -59,7 +62,7 @@ public class VendingMachineCLI {
 	//-------------------------------------------------------------------------------------
 	//                                   Our Menu Loops
 	//-------------------------------------------------------------------------------------
-	public void display(Balance balance,String choice, String file) {
+	public void display(Balance balance,String choice) {
 		while(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 			//our display menu
 			String display_choice = (String) menu.getChoiceFromOptions(DISPLAY_ITEMS_OPTIONS);
@@ -98,11 +101,11 @@ public class VendingMachineCLI {
 	public void select_Purchase(Balance balance, String choice) {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 			//displays a list of items with ID and cost
-			Menu_Display.purchase_Item_Sign();
+			Menu_Display.display_Items_Sign();
 			Display_List.items_Displayer(choice);
 
 			Menu_Display.slot_Id_Input_Sign();
-			Display_List.item_purchaser(menu.customer_Id_Input(), balance);
+			Display_List.item_Purchaser(menu.customer_Id_Input(), balance);
 			break;
 		}
 	}
