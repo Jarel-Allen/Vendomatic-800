@@ -10,8 +10,9 @@ import java.util.*;
 public class Display_List{
 
     public static List<Product> items = new ArrayList<>();
+    public static Map<String, Product> items_Grabber = new HashMap<>();
     //this is our file reader to display items as a list
-    public static void updater(String choice, Balance balance) {
+    public static void items_Displayer(String choice) {
         for(int j = 0; j < items.size(); j++) {
             if(choice.equals(VendingMachineCLI.getMainMenuOptionDisplayItems())) {
                 display_Items(items.get(j));
@@ -19,9 +20,13 @@ public class Display_List{
             } else if (choice.equals(VendingMachineCLI.getPurchaseOptionSelectProduct())) {
                 purchase_Items_List(items.get(j));
             }
-            if (items.get(j).getSlot_Location().equals(choice)) {
-                purchase_Item(balance, items.get(j));
-            }
+        }
+    }
+    public static void item_purchaser(String choice, Balance balance){
+        if(items_Grabber.get(choice)==null) {
+            Menu_Display.code_Does_Not_Exist();
+        } else {
+            purchase_Item(balance, items_Grabber.get(choice));
         }
     }
     public static void items(String file) {
@@ -31,8 +36,8 @@ public class Display_List{
                 List<String> product_Info = Arrays.asList(dataInput.nextLine().split("\\|"));
                 Product product = new Product(product_Info.get(0), product_Info.get(1), product_Info.get(2), product_Info.get(3));
                 items.add(product);
+                items_Grabber.put(product_Info.get(0), product);
             }
-
         } catch (FileNotFoundException e) {
             System.out.println("Please Check Your File Path...");
         }

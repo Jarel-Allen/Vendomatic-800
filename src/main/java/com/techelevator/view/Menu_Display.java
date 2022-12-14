@@ -61,4 +61,8 @@ public class Menu_Display {
         System.out.println();
         System.out.println("This Item Is Currently Out Of Stock!");
     }
+    public static void code_Does_Not_Exist(){
+        System.out.println();
+        System.out.println("This Code Does Not Exist!");
+    }
 }

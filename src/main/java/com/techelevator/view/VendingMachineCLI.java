@@ -34,14 +34,14 @@ public class VendingMachineCLI {
 				Menu_Display.display_Items_Sign();
 
 				//this is our displayed items as a list
-				Display_List.updater(choice, customer_Balance);
+				Display_List.items_Displayer(choice);
 
 				//this is our display menu options
 				display(customer_Balance, choice, file);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				//this is our purchase menu options
-				purchase(customer_Balance, choice, file);
+				purchase(customer_Balance, choice);
 
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
 				break;
@@ -64,14 +64,14 @@ public class VendingMachineCLI {
 			//our display menu
 			String display_choice = (String) menu.getChoiceFromOptions(DISPLAY_ITEMS_OPTIONS);
 			if(display_choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				purchase(balance, display_choice, file);
+				purchase(balance, display_choice);
 				break;
 			} else if (display_choice.equals(DISPLAY_ITEMS_OPTION_MAIN_MENU)) {
 				break;
 			}
 		}
 	}
-	public void purchase(Balance balance, String choice, String file) {
+	public void purchase(Balance balance, String choice) {
 
 
 		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
@@ -99,11 +99,10 @@ public class VendingMachineCLI {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 			//displays a list of items with ID and cost
 			Menu_Display.purchase_Item_Sign();
-			Display_List.updater(choice, balance);
+			Display_List.items_Displayer(choice);
 
 			Menu_Display.slot_Id_Input_Sign();
-			Display_List.updater(menu.customer_Id_Input(), balance);
-
+			Display_List.item_purchaser(menu.customer_Id_Input(), balance);
 			break;
 		}
 	}
