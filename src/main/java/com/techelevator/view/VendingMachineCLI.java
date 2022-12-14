@@ -70,6 +70,7 @@ public class VendingMachineCLI {
 				purchase(balance, display_choice);
 				break;
 			} else if (display_choice.equals(DISPLAY_ITEMS_OPTION_MAIN_MENU)) {
+				Menu_Display.main_Menu();
 				break;
 			}
 		}
@@ -94,6 +95,8 @@ public class VendingMachineCLI {
 				select_Purchase(balance, purchase_choice);
 
 			} else if (purchase_choice.equals(PURCHASE_OPTION_TRANSACTION)) {
+				balance.remaining_Balance();
+				Menu_Display.main_Menu();
 				break;
 			}
 		}

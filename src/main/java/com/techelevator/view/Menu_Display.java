@@ -8,6 +8,13 @@ public class Menu_Display {
         System.out.println("========================================");
     }
 
+    public static void main_Menu() {
+        System.out.println();
+        System.out.println("===================");
+        System.out.println("     Main Menu     ");
+        System.out.println("===================");
+    }
+
     public static void display_Items_Sign() {
         System.out.println();
         System.out.println("====================================");

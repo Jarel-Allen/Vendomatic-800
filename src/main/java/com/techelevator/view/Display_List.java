@@ -72,7 +72,9 @@ public class Display_List{
             item.remove_Stock();
             if (balance.getBalance().compareTo(price_value) >= 0) {
                 System.out.println();
-                System.out.println("Now Dispensing Your Item: " + item.getProduct_Name());
+                System.out.println("Dispensing Your Item: " + item.getProduct_Name());
+                System.out.println("Cost: $" + item.getProduct_Price());
+                System.out.println("Remaining Balance: $"+ balance.getBalance());
 
                 if(item.getProduct_Type().equals("Chip")) {
                     Menu_Display.chip_Display();
