@@ -55,7 +55,7 @@ public class Menu {
 	public void balance (Balance customer_balance) {
 
 		// display of money feeder
-		Menu_Display.feed_Money_Display();
+		MenuDisplay.feed_Money_Display();
 
 		// user input
 		String userInput = in.nextLine();

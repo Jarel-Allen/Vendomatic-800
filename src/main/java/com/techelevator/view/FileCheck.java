@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class File_Check extends File_Path {
+public class FileCheck extends File_Path {
     // this is our file reader before running the virtual vending machine
-    public File_Check() {
+    public FileCheck() {
         File dataFile = new File(getFile());
 
         // just reads if the file can be read

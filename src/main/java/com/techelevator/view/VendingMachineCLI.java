@@ -36,10 +36,10 @@ public class VendingMachineCLI {
 	public void run(String file) {
 
 		// our welcome sign
-		Menu_Display.welcome_Sign();
+		MenuDisplay.welcome_Sign();
 
 		//reads inventory file before menu opens
-		Inventory_Reader.items(file);
+		InventoryReader.items(file);
 
 		while (true) {
 
@@ -55,10 +55,10 @@ public class VendingMachineCLI {
 			// if choice is on display items
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// this is our display sign on top
-				Menu_Display.display_Items_Sign();
+				MenuDisplay.display_Items_Sign();
 
 				// this is our displayed items as a list
-				Inventory_Reader.items_Displayer(choice);
+				InventoryReader.items_Displayer(choice);
 
 				// this is our display menu options
 				display(customer_Balance, choice);
@@ -75,7 +75,7 @@ public class VendingMachineCLI {
 			else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
 
 				// prints out exit sign
-				Menu_Display.exit_Sign();
+				MenuDisplay.exit_Sign();
 
 				// this ends the program
 				break;
@@ -89,7 +89,7 @@ public class VendingMachineCLI {
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 
 		// reads file before running the program
-		File_Check file = new File_Check();
+		FileCheck file = new FileCheck();
 
 		// runs the vending machine
 		cli.run(file.getFile());
@@ -123,7 +123,7 @@ public class VendingMachineCLI {
 			else if (display_choice.equals(DISPLAY_ITEMS_OPTION_MAIN_MENU)) {
 
 				// prints out main menu display
-				Menu_Display.main_Menu();
+				MenuDisplay.main_Menu();
 
 				// goes back to main menu
 				break;
@@ -139,7 +139,7 @@ public class VendingMachineCLI {
 		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
 
 			// our purchase display menu on top
-			Menu_Display.purchase_Menu();
+			MenuDisplay.purchase_Menu();
 
 			// prints out current balance
 			System.out.println();
@@ -167,7 +167,7 @@ public class VendingMachineCLI {
 				balance.remaining_Balance();
 
 				// prints out main menu display
-				Menu_Display.main_Menu();
+				MenuDisplay.main_Menu();
 
 				// goes back to main menu
 				break;
@@ -183,16 +183,16 @@ public class VendingMachineCLI {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 
 			// displays items sign
-			Menu_Display.display_Items_Sign();
+			MenuDisplay.display_Items_Sign();
 
 			// displays a list of items with ID and cost
-			Inventory_Reader.items_Displayer(choice);
+			InventoryReader.items_Displayer(choice);
 
 			// prints out a string for user input
-			Menu_Display.slot_Id_Input_Sign();
+			MenuDisplay.slot_Id_Input_Sign();
 
 			// this is where customers can input ID code and purchase items
-			Inventory_Reader.item_Purchaser(menu.customer_Id_Input(), balance);
+			InventoryReader.item_Purchaser(menu.customer_Id_Input(), balance);
 
 			// goes back to purchase menu
 			break;

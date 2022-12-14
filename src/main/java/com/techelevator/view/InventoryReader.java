@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Inventory_Reader {
+public class InventoryReader {
 
     // global list of items by product
     public static List<Product> items = new ArrayList<>();
@@ -103,7 +103,7 @@ public class Inventory_Reader {
 
         // if the key is null within the map, it will print out a string
         if(items_Grabber.get(choice)==null) {
-            Menu_Display.code_Does_Not_Exist();
+            MenuDisplay.code_Does_Not_Exist();
         }
 
         // if there is a key, then it will calculate balance with cost
@@ -121,7 +121,7 @@ public class Inventory_Reader {
 
         // if the stock quantity is 0, then it will print out a string
         if (item.getProduct_Stock_Quantity()==0){
-            Menu_Display.out_Of_Stock_Display();
+            MenuDisplay.out_Of_Stock_Display();
         }
 
         // if the stock quantity is greater than 0, it will calculate money
@@ -152,21 +152,21 @@ public class Inventory_Reader {
 
             // if item type is chip, prints out chip string
             if(item.getProduct_Type().equals("Chip")) {
-                Menu_Display.chip_Display();
+                MenuDisplay.chip_Display();
             }
 
             // if item type is candy, prints out candy string
             else if(item.getProduct_Type().equals("Candy")) {
-                Menu_Display.candy_Display();
+                MenuDisplay.candy_Display();
             }
 
             // if item type is drink, prints out drink string
             else if(item.getProduct_Type().equals("Drink")) {
-                Menu_Display.drink_Display();
+                MenuDisplay.drink_Display();
             }
             // if item type is gum, prints out gum string
             else if(item.getProduct_Type().equals("Gum")) {
-                Menu_Display.gum_Display();
+                MenuDisplay.gum_Display();
             }
         }
     }
