@@ -9,12 +9,24 @@ public class Product{
     private String product_Name;
     private String product_Price;
     private String product_Type;
+    private int product_Stock_Quantity = 5;
 
     public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
         this.slot_Location = slot_Location;
         this.product_Name = product_Name;
         this.product_Price = product_Price;
         this.product_Type = product_Type;
+    }
+
+    public int remove_Stock() {
+
+        if (product_Stock_Quantity > 0) {
+            return product_Stock_Quantity --;
+        }
+        return product_Stock_Quantity;
+    }
+    public int getProduct_Stock_Quantity () {
+        return product_Stock_Quantity;
     }
 
     public String getSlot_Location() {

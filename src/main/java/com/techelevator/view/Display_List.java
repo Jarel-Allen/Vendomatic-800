@@ -2,42 +2,49 @@ package com.techelevator.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Display_List {
+public class Display_List{
 
+    public static List<Product> items = new ArrayList<>();
     //this is our file reader to display items as a list
-    public static void items(Stock_Amount amount, Balance balance, String choice, String file) {
+    public static void updater(String choice, Balance balance) {
+        for(int j = 0; j < items.size(); j++) {
+            if(choice.equals(VendingMachineCLI.getMainMenuOptionDisplayItems())) {
+                display_Items(items.get(j));
+
+            } else if (choice.equals(VendingMachineCLI.getPurchaseOptionSelectProduct())) {
+                purchase_Items_List(items.get(j));
+            }
+            if (items.get(j).getSlot_Location().equals(choice)) {
+                purchase_Item(balance, items.get(j));
+            }
+        }
+    }
+    public static void items(String file) {
         File fileInput = new File(file);
         try (Scanner dataInput = new Scanner(fileInput)) {
             while (dataInput.hasNextLine()) {
                 List<String> product_Info = Arrays.asList(dataInput.nextLine().split("\\|"));
                 Product product = new Product(product_Info.get(0), product_Info.get(1), product_Info.get(2), product_Info.get(3));
-                if(choice.equals(VendingMachineCLI.getMainMenuOptionDisplayItems())) {
-                    display_Items(product, amount);
-
-                } else if (choice.equals(VendingMachineCLI.getPurchaseOptionSelectProduct())) {
-                    purchase_Items_List(product);
-                }
-
-                if (product.getSlot_Location().equals(choice)) {
-                    purchase_Item(amount,balance, product);
-
-                }
+                items.add(product);
             }
+
         } catch (FileNotFoundException e) {
             System.out.println("Please Check Your File Path...");
         }
     }
     //---------------------------------------------------------------------------------------------
     //this is our display list of items
-    public static void display_Items(Product item, Stock_Amount amount) {
+    public static void display_Items(Product item) {
         System.out.println("Item: " + item.getProduct_Name());
-        if (amount.getQuantity()==0) {
+        if (item.getProduct_Stock_Quantity()==0) {
             System.out.println("SOLD OUT" + "\n");
         } else {
-            System.out.println("In-Stock: " + amount.getQuantity() + "\n");
+            System.out.println("In-Stock: " + item.getProduct_Stock_Quantity() + "\n");
         }
     }
 
@@ -49,15 +56,15 @@ public class Display_List {
 
     //---------------------------------------------------------------------------------------------
 
-    public static void purchase_Item(Stock_Amount amount, Balance balance, Product item) {
+    public static void purchase_Item(Balance balance, Product item) {
         String price = item.getProduct_Price();
         BigDecimal price_value = BigDecimal.valueOf(Double.valueOf(price));
-
-        if (amount.getQuantity()==0){
+        
+        if (item.getProduct_Stock_Quantity()==0){
             Menu_Display.out_Of_Stock_Display();
-        } else if (amount.getQuantity() > 0) {
+        } else if (item.getProduct_Stock_Quantity() > 0) {
             balance.subtract(price_value);
-            amount.remove_Stock(1);
+            item.remove_Stock();
             if (balance.getBalance().compareTo(price_value) >= 0) {
                 System.out.println();
                 System.out.println("Now Dispensing Your Item: " + item.getProduct_Name());
