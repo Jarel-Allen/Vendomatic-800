@@ -36,7 +36,7 @@ public class VendingMachineCLI {
 	public void run(String file) {
 
 		// our welcome sign
-		MenuDisplay.welcome_Sign();
+		Displays.welcome_Sign();
 
 		//reads inventory file before menu opens
 		InventoryReader.items(file);
@@ -55,7 +55,7 @@ public class VendingMachineCLI {
 			// if choice is on display items
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// this is our display sign on top
-				MenuDisplay.display_Items_Sign();
+				Displays.display_Items_Sign();
 
 				// this is our displayed items as a list
 				InventoryReader.items_Displayer(choice);
@@ -75,7 +75,7 @@ public class VendingMachineCLI {
 			else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
 
 				// prints out exit sign
-				MenuDisplay.exit_Sign();
+				Displays.exit_Sign();
 
 				// this ends the program
 				break;
@@ -123,7 +123,7 @@ public class VendingMachineCLI {
 			else if (display_choice.equals(DISPLAY_ITEMS_OPTION_MAIN_MENU)) {
 
 				// prints out main menu display
-				MenuDisplay.main_Menu();
+				Displays.main_Menu();
 
 				// goes back to main menu
 				break;
@@ -139,7 +139,7 @@ public class VendingMachineCLI {
 		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
 
 			// our purchase display menu on top
-			MenuDisplay.purchase_Menu();
+			Displays.purchase_Menu();
 
 			// prints out current balance
 			System.out.println();
@@ -167,7 +167,7 @@ public class VendingMachineCLI {
 				balance.remaining_Balance();
 
 				// prints out main menu display
-				MenuDisplay.main_Menu();
+				Displays.main_Menu();
 
 				// goes back to main menu
 				break;
@@ -183,13 +183,13 @@ public class VendingMachineCLI {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 
 			// displays items sign
-			MenuDisplay.display_Items_Sign();
+			Displays.display_Items_Sign();
 
 			// displays a list of items with ID and cost
 			InventoryReader.items_Displayer(choice);
 
 			// prints out a string for user input
-			MenuDisplay.slot_Id_Input_Sign();
+			Displays.slot_Id_Input_Sign();
 
 			// this is where customers can input ID code and purchase items
 			InventoryReader.item_Purchaser(menu.customer_Id_Input(), balance);

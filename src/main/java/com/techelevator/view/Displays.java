@@ -1,6 +1,6 @@
 package com.techelevator.view;
 
-public class MenuDisplay {
+public class Displays {
     public static void welcome_Sign() {
         // this is used at the beginning when the code first runs
         System.out.println();

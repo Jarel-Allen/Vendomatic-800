@@ -103,7 +103,7 @@ public class InventoryReader {
 
         // if the key is null within the map, it will print out a string
         if(items_Grabber.get(choice)==null) {
-            MenuDisplay.code_Does_Not_Exist();
+            Displays.code_Does_Not_Exist();
         }
 
         // if there is a key, then it will calculate balance with cost
@@ -121,7 +121,7 @@ public class InventoryReader {
 
         // if the stock quantity is 0, then it will print out a string
         if (item.getProduct_Stock_Quantity()==0){
-            MenuDisplay.out_Of_Stock_Display();
+            Displays.out_Of_Stock_Display();
         }
 
         // if the stock quantity is greater than 0, it will calculate money
@@ -152,21 +152,21 @@ public class InventoryReader {
 
             // if item type is chip, prints out chip string
             if(item.getProduct_Type().equals("Chip")) {
-                MenuDisplay.chip_Display();
+                Displays.chip_Display();
             }
 
             // if item type is candy, prints out candy string
             else if(item.getProduct_Type().equals("Candy")) {
-                MenuDisplay.candy_Display();
+                Displays.candy_Display();
             }
 
             // if item type is drink, prints out drink string
             else if(item.getProduct_Type().equals("Drink")) {
-                MenuDisplay.drink_Display();
+                Displays.drink_Display();
             }
             // if item type is gum, prints out gum string
             else if(item.getProduct_Type().equals("Gum")) {
-                MenuDisplay.gum_Display();
+                Displays.gum_Display();
             }
         }
     }
