@@ -8,6 +8,13 @@ public class Menu_Display {
         System.out.println(" Welcome to our Virtual Vending Machine");
         System.out.println("========================================");
     }
+    public static void exit_Sign() {
+        // this is used at the beginning when the code first runs
+        System.out.println();
+        System.out.println("=================================================");
+        System.out.println(" Thank You For Using Our Virtual Vending Machine");
+        System.out.println("=================================================");
+    }
 
     public static void main_Menu() {
         // prints out main menu

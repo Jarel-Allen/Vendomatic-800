@@ -51,6 +51,8 @@ public class VendingMachineCLI {
 
 			// -------------------------------------------------------------------------------------
 			// main menu options
+
+			// if choice is on display items
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// this is our display sign on top
 				Menu_Display.display_Items_Sign();
@@ -60,13 +62,20 @@ public class VendingMachineCLI {
 
 				// this is our display menu options
 				display(customer_Balance, choice);
+			}
 
-			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+			// if choice is on purchase
+			else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 
 				// this is our purchase menu options
 				purchase(customer_Balance, choice);
+			}
 
-			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+			// if choice is on exit
+			else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+
+				// prints out exit sign
+				Menu_Display.exit_Sign();
 
 				// this ends the program
 				break;
