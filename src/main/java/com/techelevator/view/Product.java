@@ -1,8 +1,5 @@
 package com.techelevator.view;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Product{
 
     private String slot_Location;

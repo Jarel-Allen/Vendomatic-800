@@ -53,12 +53,30 @@ public class Menu {
 
 	// using menu user input to add balance to customer
 	public void balance (Balance customer_balance) {
+
+		// display of money feeder
 		Menu_Display.feed_Money_Display();
+
+		// user input
 		String userInput = in.nextLine();
-		int money = Integer.parseInt(userInput);
-		customer_balance.add(money);
+
+		// this checks to see if the input is a whole number
+		try {
+			int money = Integer.parseInt(userInput);
+
+			// adds money from user input into balance
+			customer_balance.add(money);
+		}
+
+		// if the user input isn't a whole number, it will print out a string
+		catch (NumberFormatException e) {
+			System.out.println();
+			System.out.println("Please Enter a Whole Number.");
+		}
+
 	}
 
+	// used for ID code input
 	public String customer_Id_Input () {
 		String userInput = in.nextLine();
 		return userInput;
