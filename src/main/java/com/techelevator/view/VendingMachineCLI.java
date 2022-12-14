@@ -39,7 +39,7 @@ public class VendingMachineCLI {
 		Displays.welcome_Sign();
 
 		//reads inventory file before menu opens
-		InventoryReader.items(file);
+		Inventory.items(file);
 
 		while (true) {
 
@@ -58,7 +58,7 @@ public class VendingMachineCLI {
 				Displays.display_Items_Sign();
 
 				// this is our displayed items as a list
-				InventoryReader.items_Displayer(choice);
+				Inventory.items_Displayer(choice);
 
 				// this is our display menu options
 				display(customer_Balance, choice);
@@ -186,13 +186,13 @@ public class VendingMachineCLI {
 			Displays.display_Items_Sign();
 
 			// displays a list of items with ID and cost
-			InventoryReader.items_Displayer(choice);
+			Inventory.items_Displayer(choice);
 
 			// prints out a string for user input
 			Displays.slot_Id_Input_Sign();
 
 			// this is where customers can input ID code and purchase items
-			InventoryReader.item_Purchaser(menu.customer_Id_Input(), balance);
+			Inventory.item_Purchaser(menu.customer_Id_Input(), balance);
 
 			// goes back to purchase menu
 			break;

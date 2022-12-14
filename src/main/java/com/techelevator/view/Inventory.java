@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class InventoryReader {
+public class Inventory {
 
     // global list of items by product
     public static List<Product> items = new ArrayList<>();
