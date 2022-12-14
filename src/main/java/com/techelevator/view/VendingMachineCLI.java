@@ -27,7 +27,7 @@ public class VendingMachineCLI {
 
 	public void run(String file) {
 		Menu_Display.welcome_Sign();
-		Display_List.items(file);
+		Inventory_Reader.items(file);
 		while (true) {
 			Balance customer_Balance = new Balance();
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
@@ -37,7 +37,7 @@ public class VendingMachineCLI {
 				Menu_Display.display_Items_Sign();
 
 				//this is our displayed items as a list
-				Display_List.items_Displayer(choice);
+				Inventory_Reader.items_Displayer(choice);
 
 				//this is our display menu options
 				display(customer_Balance, choice);
@@ -105,10 +105,10 @@ public class VendingMachineCLI {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 			//displays a list of items with ID and cost
 			Menu_Display.display_Items_Sign();
-			Display_List.items_Displayer(choice);
+			Inventory_Reader.items_Displayer(choice);
 
 			Menu_Display.slot_Id_Input_Sign();
-			Display_List.item_Purchaser(menu.customer_Id_Input(), balance);
+			Inventory_Reader.item_Purchaser(menu.customer_Id_Input(), balance);
 			break;
 		}
 	}

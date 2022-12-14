@@ -2,12 +2,10 @@ package com.techelevator.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Display_List{
+public class Inventory_Reader {
 
     public static List<Product> items = new ArrayList<>();
     public static Map<String, Product> items_Grabber = new HashMap<>();
