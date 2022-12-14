@@ -11,6 +11,8 @@ public class Product{
     private String product_Type;
     private int product_Stock_Quantity = 5;
 
+    //-----------------------------------------------------------------------------------
+    // our product/item constructor
     public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
         this.slot_Location = slot_Location;
         this.product_Name = product_Name;
@@ -18,6 +20,8 @@ public class Product{
         this.product_Type = product_Type;
     }
 
+    //-----------------------------------------------------------------------------------
+    // this code removes one item stock per purchase
     public int remove_Stock() {
 
         if (product_Stock_Quantity > 0) {
@@ -25,6 +29,9 @@ public class Product{
         }
         return product_Stock_Quantity;
     }
+
+    //-----------------------------------------------------------------------------------
+    // our getters
     public int getProduct_Stock_Quantity () {
         return product_Stock_Quantity;
     }

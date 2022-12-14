@@ -14,9 +14,9 @@ public class VendingMachineCLI {
 	private static final String PURCHASE_OPTION_FEED_MONEY = "Feed Money";
 	private static final String PURCHASE_OPTION_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_OPTION_TRANSACTION = "Finish Transaction";
-	private static final String PURCHASE_OPTION_GO_BACK = "Go Back";
-	private static final String[] PURCHASE_OPTION_BACK = {PURCHASE_OPTION_GO_BACK};
 	private static final String[] PURCHASE_OPTIONS = { PURCHASE_OPTION_FEED_MONEY, PURCHASE_OPTION_SELECT_PRODUCT, PURCHASE_OPTION_TRANSACTION };
+	//-------------------------------------------------------------------------------------
+
 	//-------------------------------------------------------------------------------------
 	//our main programs
 	private Menu menu;
@@ -25,13 +25,18 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
+	//-------------------------------------------------------------------------------------
+	// this code runs our whole vending machine
 	public void run(String file) {
 		Menu_Display.welcome_Sign();
 		Inventory_Reader.items(file);
 		while (true) {
 			Balance customer_Balance = new Balance();
+			//this is what creates our main menu
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
+			//-------------------------------------------------------------------------------------
+			// main menu options
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				//this is our display sign on top
 				Menu_Display.display_Items_Sign();
@@ -52,6 +57,7 @@ public class VendingMachineCLI {
 		}
 	}
 
+	//-------------------------------------------------------------------------------------
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
@@ -59,9 +65,13 @@ public class VendingMachineCLI {
 		File_Check file = new File_Check();
 		cli.run(file.getFile());
 	}
+
+
 	//-------------------------------------------------------------------------------------
 	//                                   Our Menu Loops
 	//-------------------------------------------------------------------------------------
+
+	//this is our whole display items menu
 	public void display(Balance balance,String choice) {
 		while(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 			//our display menu
@@ -75,9 +85,10 @@ public class VendingMachineCLI {
 			}
 		}
 	}
+
+	//-------------------------------------------------------------------------------------
+	//this is our whole purchase menu
 	public void purchase(Balance balance, String choice) {
-
-
 		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
 			//our purchase display menu on top
 			Menu_Display.purchase_Menu();
@@ -91,9 +102,11 @@ public class VendingMachineCLI {
 				//allows customer to enter an amount
 				menu.balance(balance);
 
+			//our select purchase menu
 			} else if (purchase_choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 				select_Purchase(balance, purchase_choice);
 
+			//our finish transaction menu
 			} else if (purchase_choice.equals(PURCHASE_OPTION_TRANSACTION)) {
 				balance.remaining_Balance();
 				Menu_Display.main_Menu();
@@ -101,17 +114,23 @@ public class VendingMachineCLI {
 			}
 		}
 	}
+
+	//-------------------------------------------------------------------------------------
+	//our select purchase menu within our purchase menu
 	public void select_Purchase(Balance balance, String choice) {
 		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 			//displays a list of items with ID and cost
 			Menu_Display.display_Items_Sign();
 			Inventory_Reader.items_Displayer(choice);
 
+			//this is where customers can input ID code and purchase items
 			Menu_Display.slot_Id_Input_Sign();
 			Inventory_Reader.item_Purchaser(menu.customer_Id_Input(), balance);
 			break;
 		}
 	}
+
+	//our getters for other while loops
 	public static String getMainMenuOptionDisplayItems() {
 		return MAIN_MENU_OPTION_DISPLAY_ITEMS;
 	}

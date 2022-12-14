@@ -41,7 +41,6 @@ public class Menu_Display {
         System.out.print("Please Enter The ID Code: ");
     }
 
-
     public static void chip_Display () {
         System.out.println();
         System.out.println("Crunch Crunch, Yum!");

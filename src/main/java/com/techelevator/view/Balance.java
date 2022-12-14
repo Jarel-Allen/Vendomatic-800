@@ -3,8 +3,13 @@ package com.techelevator.view;
 import java.math.BigDecimal;
 
 public class Balance {
+
+    //using Big Decimals to set decimal place to match prices
     private BigDecimal balance = BigDecimal.valueOf(0).setScale(2);
 
+
+    //-----------------------------------------------------------------------------------
+    // our calculators for adding and subtracting the balance
     public void add(int money) {
         balance = balance.add(BigDecimal.valueOf(money));
     }
@@ -17,6 +22,10 @@ public class Balance {
             System.out.println("Not Enough Money!");
         }
     }
+
+
+    //-----------------------------------------------------------------------------------
+    // this code is used after they select "finish transaction", gives back remaining balance
     public void remaining_Balance() {
         System.out.println();
         System.out.println("Returning Total Change Of: $" + balance + "!");
@@ -47,6 +56,8 @@ public class Balance {
         }
     }
 
+    //-----------------------------------------------------------------------------------
+    // our getters
     public BigDecimal getBalance() {
         return balance;
     }
