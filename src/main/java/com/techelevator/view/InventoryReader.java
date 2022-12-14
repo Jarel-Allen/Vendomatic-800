@@ -116,8 +116,7 @@ public class InventoryReader {
     public static void purchase_Item(Balance balance, Product item) {
 
         // changing the string of item cost to a big decimal
-        String price = item.getProduct_Price();
-        BigDecimal price_value = BigDecimal.valueOf(Double.valueOf(price));
+        BigDecimal price_value = BigDecimal.valueOf(Double.valueOf(item.getProduct_Price()));
 
         // if the stock quantity is 0, then it will print out a string
         if (item.getProduct_Stock_Quantity()==0){
