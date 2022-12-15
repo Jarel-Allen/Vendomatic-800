@@ -2,8 +2,6 @@ package com.techelevator.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -136,6 +134,9 @@ public class Inventory {
 
             //this calculates remaining balance and prints out strings
             dispenser(balance, item, price_value);
+
+            //creates a transaction log to our log.txt
+            Logs.transactions_Log(item, balance);
         }
     }
 
@@ -169,9 +170,6 @@ public class Inventory {
             else if(item.getProduct_Type().equals("Gum")) {
                 Displays.gum_Display();
             }
-
-            //creates a transaction log to our log.txt
-            Logs.transactions_Log(item, balance);
         }
     }
 }

@@ -96,3 +96,4 @@ public class MenuTest {
 		return getMenuForTestingWithUserInput("1" + System.lineSeparator());
 	}
 }
+

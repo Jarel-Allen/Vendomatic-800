@@ -1,6 +1,5 @@
 package com.techelevator.view;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
