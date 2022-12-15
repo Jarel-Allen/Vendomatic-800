@@ -1,8 +1,8 @@
 package com.techelevator.view;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -52,20 +52,23 @@ public class Menu {
 	}
 
 	// using menu user input to add balance to customer
-	public void balance (Balance customer_balance) {
+	public void balance (Balance customer_balance){
 
 		// display of money feeder
 		Displays.feed_Money_Display();
 
 		// user input
 		String userInput = in.nextLine();
+		int money = Integer.parseInt(userInput);
 
 		// this checks to see if the input is a whole number
 		try {
-			int money = Integer.parseInt(userInput);
 
 			// adds money from user input into balance
 			customer_balance.add(money);
+
+			// creates a return change log into our log.txt
+			Logs.feeders_Log(customer_balance, money);
 		}
 
 		// if the user input isn't a whole number, it will print out a string
@@ -73,7 +76,6 @@ public class Menu {
 			System.out.println();
 			System.out.println("Please Enter a Whole Number.");
 		}
-
 	}
 
 	// used for ID code input

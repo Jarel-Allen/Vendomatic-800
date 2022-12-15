@@ -32,6 +32,8 @@ public class Balance {
     // this code is used after they select "finish transaction", gives back remaining balance
     public void remaining_Balance() {
 
+        BigDecimal current_Balance = balance;
+
         //prints out the customer's balance
         System.out.println();
         System.out.println("Returning Total Change Of: $" + balance + "!");
@@ -70,6 +72,12 @@ public class Balance {
         // this prints out the count of nickels, if any
         if (nickels_Count > 0) {
             System.out.println(nickels_Count + " Nickel(s)");
+        }
+
+        /*  if the balance is greater than 0, it will print out finish transaction logs,
+            preventing blank balances to fill the log  */
+        if (current_Balance.compareTo(BigDecimal.valueOf(0))!=0) {
+            Logs.changes_Log(current_Balance, balance);
         }
     }
 

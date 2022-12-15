@@ -1,5 +1,10 @@
 package com.techelevator.view;
 
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -21,6 +26,7 @@ public class VendingMachineCLI {
 	// array of purchase menu options
 	private static final String[] PURCHASE_OPTIONS = { PURCHASE_OPTION_FEED_MONEY, PURCHASE_OPTION_SELECT_PRODUCT, PURCHASE_OPTION_TRANSACTION };
 	// -------------------------------------------------------------------------------------
+
 
 
 	// -------------------------------------------------------------------------------------
