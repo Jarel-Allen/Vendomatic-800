@@ -20,12 +20,6 @@ public class Balance {
         if (balance.compareTo(money) >= 0) {
             balance = balance.subtract(money);
         }
-
-        // if balance can't cover the cost, it will print out a string.
-        else if (balance.compareTo(money) < 0) {
-            System.out.println();
-            System.out.println("Not Enough Money!");
-        }
     }
 
     //-----------------------------------------------------------------------------------
@@ -35,8 +29,7 @@ public class Balance {
         BigDecimal current_Balance = balance;
 
         //prints out the customer's balance
-        System.out.println();
-        System.out.println("Returning Total Change Of: $" + balance + "!");
+        System.out.println("\n" + "Returning Total Change Of: $" + balance + "!");
 
         // these are the counts of coins
         int quarters_Count = 0;
@@ -58,6 +51,7 @@ public class Balance {
             nickels_Count++;
             balance = balance.subtract(BigDecimal.valueOf(.05));
         }
+
         // at this point, the balance should be at $0.00
         System.out.println();
 

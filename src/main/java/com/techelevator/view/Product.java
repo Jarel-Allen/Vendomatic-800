@@ -46,6 +46,30 @@ public class Product{
     }
 
     public String getProduct_Type() {
+        if (product_Type.equals("Chip")) {
+            // prints out for chips
+            System.out.println();
+            System.out.println("Crunch Crunch, Yum!");
+        }
+
+        else if (product_Type.equals("Candy")) {
+            // prints out for candy
+            System.out.println();
+            System.out.println("Munch Munch, Yum!");
+        }
+
+        else if (product_Type.equals("Drink")) {
+            // prints our for drinks
+            System.out.println();
+            System.out.println("Glug Glug, Yum!");
+        }
+
+        else if (product_Type.equals("Gum")) {
+            // prints out for gum
+            System.out.println();
+            System.out.println("Chew Chew, Yum!");
+        }
+
         return product_Type;
     }
 

@@ -42,7 +42,7 @@ public class Inventory {
 
             // if the file does not have a path, it will catch the error and print out a string
         } catch (FileNotFoundException e) {
-            System.out.println("Please Check Your File Path...");
+            System.out.println("\n" + "Please Check Your File Path...");
         }
     }
 
@@ -101,14 +101,14 @@ public class Inventory {
     // this is our code when purchasing items
     public static void item_Purchaser(String choice, Balance balance){
 
-        // if the key is null within the map, it will print out a string
-        if(items_Grabber.get(choice)==null) {
-            Displays.code_Does_Not_Exist();
-        }
-
         // if there is a key, then it will calculate balance with cost
-        else {
+
+        if(items_Grabber.get(choice)!=null) {
             purchase_Item(balance, items_Grabber.get(choice));
+        }
+        else {
+            // if the key is null within the map, it will print out a string
+            System.out.println("\n" + "ID Code: [" + choice + "] Does Not Exist!");
         }
     }
 
@@ -116,7 +116,7 @@ public class Inventory {
     public static void purchase_Item(Balance balance, Product item) {
 
         // changing the string of item cost to a big decimal
-        BigDecimal price_value = BigDecimal.valueOf(Double.valueOf(item.getProduct_Price()));
+        BigDecimal price_value = BigDecimal.valueOf(Double.parseDouble(item.getProduct_Price()));
 
         // if the stock quantity is 0, then it will print out a string
         if (item.getProduct_Stock_Quantity()==0){
@@ -126,17 +126,8 @@ public class Inventory {
         // if the stock quantity is greater than 0, it will calculate money
         else if (item.getProduct_Stock_Quantity() > 0) {
 
-            // this subtracts item cost from current balance
-            balance.subtract(price_value);
-
-            // this removes one stock from the stock quantity
-            item.remove_Stock();
-
-            //this calculates remaining balance and prints out strings
+            // this calculates remaining balance and prints out strings
             dispenser(balance, item, price_value);
-
-            //creates a transaction log to our log.txt
-            Logs.transactions_Log(item, balance);
         }
     }
 
@@ -146,30 +137,26 @@ public class Inventory {
         // checks to see if balance will still be greater than 0
         if (balance.getBalance().compareTo(price_value) >= 0) {
 
+            // this subtracts item cost from current balance
+            balance.subtract(price_value);
+
+            // this removes one stock from the stock quantity
+            item.remove_Stock();
+
             // prints out item name, cost, and remaining balance
-            System.out.println();
-            System.out.println("Dispensing Your Item: " + item.getProduct_Name());
+            System.out.println("\n" + "Dispensing Your Item: " + item.getProduct_Name());
             System.out.println("Cost: $" + item.getProduct_Price());
             System.out.println("Remaining Balance: $"+ balance.getBalance());
 
-            // if item type is chip, prints out chip string
-            if(item.getProduct_Type().equals("Chip")) {
-                Displays.chip_Display();
-            }
+            // prints out message by type of item
+            item.getProduct_Type();
 
-            // if item type is candy, prints out candy string
-            else if(item.getProduct_Type().equals("Candy")) {
-                Displays.candy_Display();
-            }
-
-            // if item type is drink, prints out drink string
-            else if(item.getProduct_Type().equals("Drink")) {
-                Displays.drink_Display();
-            }
-            // if item type is gum, prints out gum string
-            else if(item.getProduct_Type().equals("Gum")) {
-                Displays.gum_Display();
-            }
+            // creates a transaction log to our log.txt
+            Logs.transactions_Log(item, balance);
+        }
+        // if there is not enough money, prints message
+        else {
+            System.out.println("\n" + "You are short of $" + price_value.subtract(balance.getBalance()) + ". Feed More Money!");
         }
     }
 }
