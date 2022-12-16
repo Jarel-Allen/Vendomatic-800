@@ -143,6 +143,9 @@ public class Inventory {
             // this removes one stock from the stock quantity
             item.remove_Stock();
 
+            // this adds one count after purchase to sales report
+            item.add_PurchaseCount();
+
             // prints out item name, cost, and remaining balance
             System.out.println("\n" + "Dispensing Your Item: " + item.getProduct_Name());
             System.out.println("Cost: $" + item.getProduct_Price());

@@ -48,18 +48,37 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+	//----------------------------------------------------------------------------------------------
+	// this is used for the sales report hidden option in main menu
+	public Object getChoiceFromOptionsWithSalesReport(Object[] options) {
+		Object choice = null;
+		while (choice == null) {
+			displayMenuOptionsWithSalesReport(options);
+			choice = getChoiceFromUserInput(options);
+		}
+		return choice;
+	}
 
+	private void displayMenuOptionsWithSalesReport(Object[] options) {
+		out.println();
+		for (int i = 0; i < options.length-1; i++) {
+			int optionNum = i + 1;
+			out.println(optionNum + ") " + options[i]);
+		}
+		out.print(System.lineSeparator() + "Please choose an option >>> ");
+		out.flush();
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	// using menu user input to add balance to customer
 	public void balance (Balance customer_balance){
 
 		// display of money feeder
 		Displays.feed_Money_Display();
 
-			// this checks to see if the input is a whole number
+		// this checks to see if the input is a whole number
 		try {
-			// user input
-			String userInput = in.nextLine();
-			int money = Integer.parseInt(userInput);
+			int money = Integer.parseInt(customer_Input());
 
 			// adds money from user input into balance
 			customer_balance.add(money);
@@ -75,7 +94,7 @@ public class Menu {
 	}
 
 	// used for ID code input
-	public String customer_Id_Input () {
+	public String customer_Input () {
 		String userInput = in.nextLine();
 		return userInput;
 	}

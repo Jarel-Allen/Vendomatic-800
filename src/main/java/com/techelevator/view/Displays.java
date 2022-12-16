@@ -47,7 +47,19 @@ public class Displays {
     }
 
     public static void out_Of_Stock_Display() {
-        //used when items are out of stock
+        // used when items are out of stock
         System.out.println("\n"+"This Item Is Currently Out Of Stock!");
+    }
+
+    public static void dispensing_Coins() {
+        // used when coins are dispensing from the machine
+        System.out.println("\n" + "Dispensing Coins:");
+    }
+
+    public static void sales_Report_Display() {
+        // used when creating a sales report
+        System.out.println("\n" + "==========================================");
+        System.out.println("       Creating A Sales Report File");
+        System.out.println("==========================================");
     }
 }

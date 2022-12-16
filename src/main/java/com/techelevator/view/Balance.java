@@ -36,6 +36,10 @@ public class Balance {
         int dimes_Count = 0;
         int nickels_Count = 0;
 
+        if (balance.compareTo(BigDecimal.valueOf(0)) > 0) {
+            Displays.dispensing_Coins();
+        }
+
         // while the balance is first, more than a quarter, it will add a quarter to count, and subtract from balance
         while (balance.compareTo(BigDecimal.valueOf(.25)) >= 0) {
             quarters_Count++;
@@ -53,7 +57,6 @@ public class Balance {
         }
 
         // at this point, the balance should be at $0.00
-        System.out.println();
 
         // this prints out the count of quarters, if any
         if (quarters_Count > 0){

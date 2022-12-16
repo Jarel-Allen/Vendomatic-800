@@ -5,8 +5,10 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 
+	private static final String MAIN_MENU_OPTION_SALES_REPORT = "Sales Report";
+
 	// array of main menu options
-	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
+	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT, MAIN_MENU_OPTION_SALES_REPORT };
 	// -------------------------------------------------------------------------------------
 	private static final String DISPLAY_ITEMS_OPTION_MAIN_MENU = "Main Menu";
 
@@ -47,14 +49,15 @@ public class VendingMachineCLI {
 			// creating a new balance of 0.00;
 			Balance customer_Balance = new Balance();
 
-			// this is what creates our main menu
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			// this is what creates our main menu with a hidden sales report
+			String choice = (String) menu.getChoiceFromOptionsWithSalesReport(MAIN_MENU_OPTIONS);
 
 			// -------------------------------------------------------------------------------------
 			// main menu options
 
 			// if choice is on display items
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
+
 				// this is our display sign on top
 				Displays.display_Items_Sign();
 
@@ -81,6 +84,18 @@ public class VendingMachineCLI {
 				// this ends the program
 				break;
 			}
+
+			// this option is hidden from main menu
+			else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)) {
+
+				// creates a log for sales report
+				Logs.sales_Report(Inventory.items);
+
+				// prints out a sales report sign and menu sign
+				Displays.sales_Report_Display();
+
+				Displays.main_Menu();
+			}
 		}
 	}
 
@@ -101,8 +116,8 @@ public class VendingMachineCLI {
 	//                                    Our Menu Loops
 	// -------------------------------------------------------------------------------------
 
-	// this is our whole display items menu
-	public void display(Balance balance,String choice) {
+	// this is our whole display items menu's while loop
+	public void display(Balance balance, String choice) {
 
 		// while it's in the display item option
 		while(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -133,7 +148,7 @@ public class VendingMachineCLI {
 	}
 
 	//-------------------------------------------------------------------------------------
-	// this is our whole purchase menu
+	// this is our whole purchase menu's while loop
 	public void purchase(Balance balance, String choice) {
 
 		// while the choice is the purchase option
@@ -177,7 +192,7 @@ public class VendingMachineCLI {
 	}
 
 	// -------------------------------------------------------------------------------------
-	// our select purchase menu within our purchase menu
+	// our select purchase menu's while loop (within our purchase menu)
 	public void select_Purchase(Balance balance, String choice) {
 
 		// while the choice is on select product
@@ -193,7 +208,7 @@ public class VendingMachineCLI {
 			Displays.slot_Id_Input_Sign();
 
 			// this is where customers can input ID code and purchase items
-			Inventory.item_Purchaser(menu.customer_Id_Input(), balance);
+			Inventory.item_Purchaser(menu.customer_Input(), balance);
 
 			// goes back to purchase menu
 			break;

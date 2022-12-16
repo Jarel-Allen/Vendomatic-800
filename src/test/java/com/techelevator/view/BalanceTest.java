@@ -40,7 +40,6 @@ public class BalanceTest {
         //will print out "Not Enough Money!"
         Balance balance = new Balance();
         balance.add(3);
-        System.out.println("Expected output: Not Enough Money!");
         balance.subtract(BigDecimal.valueOf(4));
         Assert.assertEquals(BigDecimal.valueOf(3).setScale(2), balance.getBalance());
     }
