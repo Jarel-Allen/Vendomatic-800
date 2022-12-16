@@ -36,7 +36,7 @@ public class Inventory {
                 // adds product to the list of items
                 items.add(product);
 
-                // adds slot location as key, and then product as the value into a map
+                // adds slot location as key, and then product as the value into a map called items grabber
                 items_Grabber.put(product_Info.get(0), product);
             }
 
@@ -98,7 +98,7 @@ public class Inventory {
 
     //-------------------------------------------------------------------------------
 
-    // this is our code when purchasing items
+    // this is our method when purchasing items
     public static void item_Purchaser(String choice, Balance balance){
 
         // if there is a key, then it will calculate balance with cost
@@ -112,7 +112,7 @@ public class Inventory {
         }
     }
 
-    // code to calculate balance and change stock quantity
+    // method used to calculate balance and change stock quantity
     public static void purchase_Item(Balance balance, Product item) {
 
         // changing the string of item cost to a big decimal
@@ -131,7 +131,7 @@ public class Inventory {
         }
     }
 
-    // this code is for after entering the slot location, our dispenser
+    // this method is for after entering the slot location, our dispenser
     public static void dispenser(Balance balance, Product item, BigDecimal price_value) {
 
         // checks to see if balance will still be greater than 0

@@ -35,13 +35,13 @@ public class VendingMachineCLI {
 	}
 
 	// -------------------------------------------------------------------------------------
-	// this code runs our whole vending machine
+	// this method runs our whole vending machine
 	public void run(String file) {
 
 		// our welcome sign
 		Displays.welcome_Sign();
 
-		//reads inventory file before menu opens
+		// reads inventory file before menu opens
 		Inventory.items(file);
 
 		while (true) {

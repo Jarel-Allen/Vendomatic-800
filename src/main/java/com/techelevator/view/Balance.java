@@ -23,7 +23,7 @@ public class Balance {
     }
 
     //-----------------------------------------------------------------------------------
-    // this code is used after they select "finish transaction", gives back remaining balance
+    // this method is used after they select "finish transaction", gives back remaining balance
     public void remaining_Balance() {
 
         BigDecimal current_Balance = balance;

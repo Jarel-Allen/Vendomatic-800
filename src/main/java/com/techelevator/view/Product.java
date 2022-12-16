@@ -12,8 +12,6 @@ public class Product{
     private int product_Stock_Quantity = 5;
     private int product_Purchase_Count = 0;
 
-
-
     //-----------------------------------------------------------------------------------
     // our product/item constructor
     public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
@@ -24,7 +22,7 @@ public class Product{
     }
 
     //-----------------------------------------------------------------------------------
-    // this code removes one item stock per purchase
+    // this method removes one item stock per purchase
     public int remove_Stock() {
 
         if (product_Stock_Quantity > 0) {
@@ -33,7 +31,7 @@ public class Product{
         return product_Stock_Quantity;
     }
 
-    // this code adds one purchase count for sales report
+    // this method adds one purchase count for sales report
     public int add_PurchaseCount() {
         if (product_Purchase_Count <= 5) {
             product_Purchase_Count++;
@@ -63,6 +61,7 @@ public class Product{
         return product_Price;
     }
 
+    // will print out by type
     public String getProduct_Type() {
         if (product_Type.equals("Chip")) {
             // prints out for chips
