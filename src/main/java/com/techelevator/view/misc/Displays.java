@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.view.misc;
 
 public class Displays {
     public static void welcome_Sign() {
@@ -51,6 +51,11 @@ public class Displays {
         System.out.println("\n"+"This Item Is Currently Out Of Stock!");
     }
 
+    public static void change_Display() {
+        System.out.println("\n" + "========================");
+        System.out.println("     Coin Dispenser     ");
+        System.out.println("========================");
+    }
     public static void dispensing_Coins() {
         // used when coins are dispensing from the machine
         System.out.println("\n" + "Dispensing Coins:");

@@ -1,4 +1,7 @@
-package com.techelevator.view;
+package com.techelevator.view.balance;
+
+import com.techelevator.view.misc.Displays;
+import com.techelevator.view.logger.Logs;
 
 import java.math.BigDecimal;
 
@@ -22,11 +25,13 @@ public class Balance {
         }
     }
 
-    //-----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
     // this method is used after they select "finish transaction", gives back remaining balance
     public void remaining_Balance() {
 
         BigDecimal current_Balance = balance;
+
+        Displays.change_Display();
 
         //prints out the customer's balance
         System.out.println("\n" + "Returning Total Change Of: $" + balance + "!");
@@ -40,6 +45,20 @@ public class Balance {
             Displays.dispensing_Coins();
         }
 
+        // subtracts balance by coin value
+        subtract_By_Coins(quarters_Count, dimes_Count, nickels_Count);
+        // at this point, the balance should be at $0.00 and coins are dispensed
+
+        /*  if the balance is greater than 0, it will print out finish transaction logs,
+            preventing blank balances to fill the log  */
+        if (current_Balance.compareTo(BigDecimal.valueOf(0))!=0) {
+            Logs.changes_Log(current_Balance, balance);
+        }
+    }
+
+    //-------------------------------------------------------------------------------------
+    // this method subtracts balance by coin value
+    public void subtract_By_Coins(int quarters_Count, int dimes_Count, int nickels_Count) {
         // while the balance is first, more than a quarter, it will add a quarter to count, and subtract from balance
         while (balance.compareTo(BigDecimal.valueOf(.25)) >= 0) {
             quarters_Count++;
@@ -56,8 +75,12 @@ public class Balance {
             balance = balance.subtract(BigDecimal.valueOf(.05));
         }
 
-        // at this point, the balance should be at $0.00
+        // prints out coin if count is greater than 0
+        coin_Dispenser(quarters_Count, dimes_Count, nickels_Count);
+    }
 
+    // this method will print out coins if the count is greater than 0
+    public void coin_Dispenser(int quarters_Count, int dimes_Count, int nickels_Count) {
         // this prints out the count of quarters, if any
         if (quarters_Count > 0){
             System.out.println(quarters_Count + " Quarter(s)");
@@ -69,12 +92,6 @@ public class Balance {
         // this prints out the count of nickels, if any
         if (nickels_Count > 0) {
             System.out.println(nickels_Count + " Nickel(s)");
-        }
-
-        /*  if the balance is greater than 0, it will print out finish transaction logs,
-            preventing blank balances to fill the log  */
-        if (current_Balance.compareTo(BigDecimal.valueOf(0))!=0) {
-            Logs.changes_Log(current_Balance, balance);
         }
     }
 

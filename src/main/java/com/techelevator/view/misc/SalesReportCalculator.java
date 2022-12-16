@@ -1,4 +1,6 @@
-package com.techelevator.view;
+package com.techelevator.view.misc;
+
+import com.techelevator.view.inventory.Product;
 
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
@@ -36,8 +38,7 @@ public class SalesReportCalculator {
 
         // catches if there is a problem with writing to a file
         catch (Exception e) {
-            System.out.println();
-            System.out.println("\n" + "An Error Has Occurred with Sales Report Log");
+            ExceptionHandling.salesReportLog_Exception();
         }
     }
 }

@@ -1,8 +1,9 @@
-package com.techelevator.view;
+package com.techelevator.view.menuTest;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
+import com.techelevator.view.menu.Menu;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

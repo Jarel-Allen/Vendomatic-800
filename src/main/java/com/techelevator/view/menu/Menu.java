@@ -1,4 +1,10 @@
-package com.techelevator.view;
+package com.techelevator.view.menu;
+
+import com.techelevator.view.balance.Balance;
+import com.techelevator.view.exceptions.StringToNumberException;
+import com.techelevator.view.logger.Logs;
+import com.techelevator.view.misc.Displays;
+import com.techelevator.view.misc.ExceptionHandling;
 
 import java.io.*;
 import java.util.Scanner;
@@ -86,13 +92,13 @@ public class Menu {
 			// creates a return change log into our log.txt
 			Logs.feeders_Log(customer_balance, money);
 		}
-
-		// if the user input isn't a whole number, it will print out a string
 		catch (NumberFormatException e) {
-			System.out.println("\n"+"Please Enter a Whole Number (Without A Decimal).");
+			// if the user input isn't a whole number, it will print out a string
+			ExceptionHandling.parseInt_Exception();
 		}
 	}
 
+	//--------------------------------------------------------------------------------------------------
 	// used for ID code input
 	public String customer_Input () {
 		String userInput = in.nextLine();

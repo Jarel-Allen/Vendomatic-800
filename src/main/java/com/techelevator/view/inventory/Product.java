@@ -1,4 +1,4 @@
-package com.techelevator.view;
+package com.techelevator.view.inventory;
 
 public class Product{
 
@@ -33,7 +33,7 @@ public class Product{
 
     // this method adds one purchase count for sales report
     public int add_PurchaseCount() {
-        if (product_Purchase_Count <= 5) {
+        if (product_Purchase_Count < 5) {
             product_Purchase_Count++;
         }
         return product_Purchase_Count;
@@ -61,8 +61,18 @@ public class Product{
         return product_Price;
     }
 
-    // will print out by type
+
     public String getProduct_Type() {
+
+        // will print out by type
+        checkProductType();
+
+        return product_Type;
+    }
+
+    //---------------------------------------------------------------------------------------
+    // checks the product type and will print out by type
+    public void checkProductType(){
         if (product_Type.equals("Chip")) {
             // prints out for chips
             System.out.println("\n" + "Crunch Crunch, Yum!");
@@ -82,8 +92,6 @@ public class Product{
             // prints out for gum
             System.out.println("\n" + "Chew Chew, Yum!");
         }
-
-        return product_Type;
     }
 
 }

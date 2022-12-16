@@ -1,4 +1,11 @@
-package com.techelevator.view;
+package com.techelevator;
+
+import com.techelevator.view.menu.Menu;
+import com.techelevator.view.balance.Balance;
+import com.techelevator.view.datafile.FileCheck;
+import com.techelevator.view.inventory.Inventory;
+import com.techelevator.view.logger.Logs;
+import com.techelevator.view.misc.Displays;
 
 public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
@@ -62,7 +69,7 @@ public class VendingMachineCLI {
 				Displays.display_Items_Sign();
 
 				// this is our displayed items as a list
-				Inventory.items_Displayer(choice);
+				Inventory.items_List_Display(choice);
 
 				// this is our display menu options
 				display(customer_Balance, choice);
@@ -202,7 +209,7 @@ public class VendingMachineCLI {
 			Displays.display_Items_Sign();
 
 			// displays a list of items with ID and cost
-			Inventory.items_Displayer(choice);
+			Inventory.items_List_Display(choice);
 
 			// prints out a string for user input
 			Displays.slot_Id_Input_Sign();

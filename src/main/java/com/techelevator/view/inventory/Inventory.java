@@ -1,4 +1,10 @@
-package com.techelevator.view;
+package com.techelevator.view.inventory;
+
+import com.techelevator.view.balance.Balance;
+import com.techelevator.view.misc.Displays;
+import com.techelevator.VendingMachineCLI;
+import com.techelevator.view.logger.Logs;
+import com.techelevator.view.misc.ExceptionHandling;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,14 +48,14 @@ public class Inventory {
 
             // if the file does not have a path, it will catch the error and print out a string
         } catch (FileNotFoundException e) {
-            System.out.println("\n" + "Please Check Your File Path...");
+            ExceptionHandling.fileException();
         }
     }
 
     //-------------------------------------------------------------------------------------
 
     // this is a list of items to be displayed in our menus
-    public static void items_Displayer(String choice) {
+    public static void items_List_Display(String choice) {
 
         // this is a for loop that goes through every item
         for(Product p : items) {
@@ -58,7 +64,7 @@ public class Inventory {
             if(choice.equals(VendingMachineCLI.getMainMenuOptionDisplayItems())) {
 
                 // displays list of items with stocked quantity
-                display_Items(p);
+                display_Items_List(p);
             }
 
             // if choice is on select product, it will print out slot location/item name/item price
@@ -71,7 +77,7 @@ public class Inventory {
     }
 
     // displays list of items with stocked quantity
-    public static void display_Items(Product item) {
+    public static void display_Items_List(Product item) {
 
         // prints out each product name
         System.out.println("Item: " + item.getProduct_Name());

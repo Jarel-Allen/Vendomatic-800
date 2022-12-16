@@ -1,30 +1,16 @@
-package com.techelevator.view;
+package com.techelevator.view.logger;
+
+import com.techelevator.view.balance.Balance;
+import com.techelevator.view.misc.DateAndTimeFormat;
+import com.techelevator.view.misc.ExceptionHandling;
+import com.techelevator.view.inventory.Product;
+import com.techelevator.view.misc.SalesReportCalculator;
 
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-public class Logs {
-
-    // returns the current date and time as a string
-    public static String getDate_Time() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-        String s_Date = formatter.format(date);
-        return s_Date;
-    }
-
-    // returns the current date and time as a string formatted to create a file
-    public static String getFile_Date_Time() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy hh.mm.ss a");
-        String s_Date = formatter.format(date);
-        return s_Date;
-    }
-
-
+public class Logs extends DateAndTimeFormat {
 
     //used to write our purchase logs in Log.txt
     public static void transactions_Log(Product item, Balance balance) {
@@ -33,7 +19,7 @@ public class Logs {
             t_log.write(line.getBytes());
         }
         catch (Exception e){
-            System.out.println("\n" + "An Error Has Occurred Within Transaction Log");
+            ExceptionHandling.transactionLog_Exception();
         }
     }
 
@@ -45,7 +31,7 @@ public class Logs {
             f_log.write(line.getBytes());
         }
         catch (Exception e){
-            System.out.println("\n" + "An Error Has Occurred Within Feeding Money Log");
+            ExceptionHandling.feederLog_Exception();
         }
     }
 
@@ -61,7 +47,7 @@ public class Logs {
             c_log.write("- END OF TRANSACTION -\n".getBytes());
         }
         catch (Exception e){
-            System.out.println("\n" + "An Error Has Occurred with Change Log");
+            ExceptionHandling.changeLog_Exception();
         }
     }
 
@@ -78,7 +64,7 @@ public class Logs {
         }
 
         catch (Exception e){
-            System.out.println("\n" + "An Error Has Occurred with Sales Report Log");
+            ExceptionHandling.salesReportLog_Exception();
         }
     }
 }

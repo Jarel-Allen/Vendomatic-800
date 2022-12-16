@@ -1,5 +1,6 @@
-package com.techelevator.view;
+package com.techelevator.view.balanceTest;
 
+import com.techelevator.view.balance.Balance;
 import org.junit.Assert;
 import org.junit.Test;
 

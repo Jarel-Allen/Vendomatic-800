@@ -1,4 +1,6 @@
-package com.techelevator.view;
+package com.techelevator.view.datafile;
+
+import com.techelevator.view.misc.ExceptionHandling;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,11 +16,10 @@ public class FileCheck extends FilePath {
         // just reads if the file can be read
         try (Scanner dataInput = new Scanner(dataFile)) { }
 
+        catch(FileNotFoundException e) {
             // if the file cannot be read, it will stop running the program
-            catch(FileNotFoundException e) {
-                System.out.println();
-                System.out.println("File Not Found.");
-                exit(0);
+            ExceptionHandling.fileException();
         }
     }
+
 }
