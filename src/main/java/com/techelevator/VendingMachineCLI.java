@@ -165,8 +165,7 @@ public class VendingMachineCLI {
 			Displays.purchase_Menu();
 
 			// prints out current balance
-			System.out.println();
-			System.out.println("Current Money Provided: $" + balance.getBalance());
+			System.out.println("\n"+"Current Money Provided: $" + balance.getBalance());
 
 			// our purchase menu options
 			String purchase_choice = (String) menu.getChoiceFromOptions(PURCHASE_OPTIONS);
