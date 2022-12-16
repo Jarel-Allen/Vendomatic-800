@@ -102,6 +102,6 @@ public class Menu {
 	// used for ID code input
 	public String customer_Input () {
 		String userInput = in.nextLine();
-		return userInput;
+		return userInput.toUpperCase();
 	}
 }

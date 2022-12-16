@@ -51,18 +51,21 @@ public class BalanceTest {
         Balance balance = new Balance();
         balance.add(10);
 
-        //prints out a message for answer
-        System.out.println("Expected output: 40 Quarter(s)");
+
+
         balance.remaining_Balance();
         Assert.assertEquals(BigDecimal.valueOf(0).setScale(2), balance.getBalance());
+        //prints out a message for answer
+        System.out.println("\n"+"Expected output: 40 Quarter(s)");
 
         System.out.println();
         balance.add(10);
         balance.subtract(BigDecimal.valueOf(4.70).setScale(2));
 
-        //prints out a message for answer
-        System.out.println("Expected output: 21 Quarter(s) and 1 Nickel(s)");
+
         balance.remaining_Balance();
         Assert.assertEquals(BigDecimal.valueOf(0).setScale(2), balance.getBalance());
+        //prints out a message for answer
+        System.out.println("\n"+"Expected output: 21 Quarter(s) and 1 Nickel(s)");
     }
 }
