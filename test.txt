@@ -1,10 +1,10 @@
-A1|B1|C|D
-A2|B2|C|D
-A3|B3|C|D
-A4|B4|C|D
-A5|B5|C|D
-A6|B6|C|D
-A7|B7|C|D
-A8|B8|C|D
-A9|B9|C|D
-A10|B10|C|D
+A1|Name1|C|Chip
+A2|Name2|C|return back2
+A3|Name3|C|Gum
+A4|Name4|C|Candy
+A5|Name5|C|return back5
+A6|Name6|C|Drink
+A7|Name7|C|return back7
+A8|Name8|C|Drink
+A9|Name9|C|return back9
+A10|Name10|C|Chip

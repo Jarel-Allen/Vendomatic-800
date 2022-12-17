@@ -157,8 +157,8 @@ public class Inventory {
             System.out.println("Cost: $" + item.getProduct_Price());
             System.out.println("Remaining Balance: $"+ balance.getBalance());
 
-            // prints out message by type of item
-            item.getProduct_Type();
+            // prints out sound by type of item
+            soundCheck(item);
 
             // creates a transaction log to our log.txt
             Logs.transactions_Log(item, balance);
@@ -168,4 +168,30 @@ public class Inventory {
             System.out.println("\n" + "You are short of $" + price_value.subtract(balance.getBalance()) + ". Feed More Money!");
         }
     }
+
+    //------------------------------------------------------------------------------------------------------------------------------------
+    // creates a sound for each item
+    public static void soundCheck(Product item) {
+        if (item.getProduct_Type().equals("Chip")) {
+            // prints out for chips
+            System.out.println("\n" + "Crunch Crunch, Yum!");
+        }
+
+        else if (item.getProduct_Type().equals("Candy")) {
+            // prints out for candy
+            System.out.println("\n" + "Munch Munch, Yum!");
+        }
+
+        else if (item.getProduct_Type().equals("Drink")) {
+            // prints our for drinks
+            System.out.println("\n" + "Glug Glug, Yum!");
+        }
+
+        else if (item.getProduct_Type().equals("Gum")) {
+            // prints out for gum
+            System.out.println("\n" + "Chew Chew, Yum!");
+        }
+    }
+
 }
+

@@ -14,11 +14,16 @@ public class SalesReportCalculator {
             // collects all purchased items' costs
             BigDecimal sales = BigDecimal.valueOf(0).setScale(2);
 
+            // creating indent to look better
+            String indent = "                    ";
+
             // for every product of the list
             for (Product p : items) {
-
+                // each product has an indent
+                String item_Name = p.getProduct_Name();
+                item_Name += indent.substring(0, indent.length() - p.getProduct_Name().length());
                 // prints out product name and purchase count
-                String line = p.getProduct_Name() + "|" + p.getProduct_Purchase_Count() + "\n";
+                String line = item_Name + "| " + p.getProduct_Purchase_Count() + "\n";
 
                 // writes the line of the string
                 report_Of_Sales.write(line.getBytes());
@@ -32,7 +37,7 @@ public class SalesReportCalculator {
             }
 
             // prints out the total sale cost
-            String sales_Total = "\n**TOTAL SALES** $" + sales;
+            String sales_Total = "\n**TOTAL SALES**     $" + sales;
             report_Of_Sales.write(sales_Total.getBytes());
         }
 

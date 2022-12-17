@@ -33,7 +33,7 @@ public class Product{
 
     // this method adds one purchase count for sales report
     public int add_PurchaseCount() {
-        if (product_Purchase_Count < 5) {
+        if (product_Purchase_Count <  5) {
             product_Purchase_Count++;
         }
         return product_Purchase_Count;
@@ -61,37 +61,9 @@ public class Product{
         return product_Price;
     }
 
-
     public String getProduct_Type() {
-
-        // will print out by type
-        checkProductType();
-
         return product_Type;
     }
 
     //---------------------------------------------------------------------------------------
-    // checks the product type and will print out by type
-    public void checkProductType(){
-        if (product_Type.equals("Chip")) {
-            // prints out for chips
-            System.out.println("\n" + "Crunch Crunch, Yum!");
-        }
-
-        else if (product_Type.equals("Candy")) {
-            // prints out for candy
-            System.out.println("\n" + "Munch Munch, Yum!");
-        }
-
-        else if (product_Type.equals("Drink")) {
-            // prints our for drinks
-            System.out.println("\n" + "Glug Glug, Yum!");
-        }
-
-        else if (product_Type.equals("Gum")) {
-            // prints out for gum
-            System.out.println("\n" + "Chew Chew, Yum!");
-        }
-    }
-
 }
