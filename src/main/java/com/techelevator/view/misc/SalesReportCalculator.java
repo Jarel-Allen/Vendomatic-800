@@ -1,5 +1,6 @@
 package com.techelevator.view.misc;
 
+import com.techelevator.view.inventory.Inventory;
 import com.techelevator.view.inventory.Product;
 
 import java.io.FileOutputStream;
@@ -44,6 +45,13 @@ public class SalesReportCalculator {
         // catches if there is a problem with writing to a file
         catch (Exception e) {
             ExceptionHandling.salesReportLog_Exception();
+        }
+    }
+
+    // sets the sold item counts back to 0
+    public static void set_To_Zero () {
+        for (Product p : Inventory.items) {
+            p.setProduct_Purchase_Count(0);
         }
     }
 }

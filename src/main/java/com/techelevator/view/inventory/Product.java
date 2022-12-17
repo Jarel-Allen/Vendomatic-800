@@ -33,7 +33,7 @@ public class Product{
 
     // this method adds one purchase count for sales report
     public int add_PurchaseCount() {
-        if (product_Purchase_Count <  5) {
+        if (product_Stock_Quantity > 0) {
             product_Purchase_Count++;
         }
         return product_Purchase_Count;
@@ -66,4 +66,8 @@ public class Product{
     }
 
     //---------------------------------------------------------------------------------------
+    // our setter to keep every sales report unique purchases
+    public void setProduct_Purchase_Count(int product_Purchase_Count) {
+        this.product_Purchase_Count = product_Purchase_Count;
+    }
 }

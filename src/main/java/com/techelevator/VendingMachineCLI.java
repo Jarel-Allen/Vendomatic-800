@@ -6,6 +6,7 @@ import com.techelevator.view.datafile.FileCheck;
 import com.techelevator.view.inventory.Inventory;
 import com.techelevator.view.logger.Logs;
 import com.techelevator.view.misc.Displays;
+import com.techelevator.view.misc.SalesReportCalculator;
 
 public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
@@ -98,9 +99,13 @@ public class VendingMachineCLI {
 				// creates a log for sales report
 				Logs.sales_Report(Inventory.items);
 
+				// sets purchase count back to 0
+				SalesReportCalculator.set_To_Zero();
+
 				// prints out a sales report sign and menu sign
 				Displays.sales_Report_Display();
 
+				// prints main menu display before entering main menu
 				Displays.main_Menu();
 			}
 		}

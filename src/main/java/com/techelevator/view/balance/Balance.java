@@ -41,6 +41,7 @@ public class Balance {
         int dimes_Count = 0;
         int nickels_Count = 0;
 
+        // if the balance is over 0, dispensing coins display will print
         if (balance.compareTo(BigDecimal.valueOf(0)) > 0) {
             Displays.dispensing_Coins();
         }
