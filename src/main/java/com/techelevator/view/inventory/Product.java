@@ -7,13 +7,13 @@ public class Product{
     private String product_Price;
     private String product_Type;
 
-    //-----------------------------------------------------------------------------------
     // stock counts for each item
+    //-----------------------------------------------------------------------------------
     private int product_Stock_Quantity = 5;
     private int product_Purchase_Count = 0;
 
-    //-----------------------------------------------------------------------------------
     // our product/item constructor
+    //-----------------------------------------------------------------------------------
     public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
         this.slot_Location = slot_Location;
         this.product_Name = product_Name;
@@ -21,8 +21,8 @@ public class Product{
         this.product_Type = product_Type;
     }
 
-    //-----------------------------------------------------------------------------------
     // this method removes one item stock per purchase
+    //-----------------------------------------------------------------------------------
     public int remove_Stock() {
 
         if (product_Stock_Quantity > 0) {
@@ -39,8 +39,8 @@ public class Product{
         return product_Purchase_Count;
     }
 
-    //-----------------------------------------------------------------------------------
     // our getters
+    //-----------------------------------------------------------------------------------
     public int getProduct_Stock_Quantity () {
         return product_Stock_Quantity;
     }
@@ -65,8 +65,8 @@ public class Product{
         return product_Type;
     }
 
-    //---------------------------------------------------------------------------------------
     // our setter to keep every sales report unique purchases
+    //---------------------------------------------------------------------------------------
     public void setProduct_Purchase_Count(int product_Purchase_Count) {
         this.product_Purchase_Count = product_Purchase_Count;
     }

@@ -17,7 +17,7 @@ public class InventoryTest {
         List<Product> items = new ArrayList<>();
         Map<String, Product> items_Grabber = new HashMap<>();
 
-        Inventory.items("test.txt");
+        Inventory.data_Reader("test.txt");
         for (Product item : Inventory.items) {
             items.add(item);
             items_Grabber.put(item.getSlot_Location(), item);

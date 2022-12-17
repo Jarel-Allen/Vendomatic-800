@@ -10,13 +10,15 @@ public class Balance {
     // using Big Decimals to set decimal place to match prices
     private BigDecimal balance = BigDecimal.valueOf(0).setScale(2);
 
-
+    // our calculators for balance
     // -----------------------------------------------------------------------------------
-    // our calculators for adding and subtracting the balance
+
+    // adds money to balance
     public void add(int money) {
         balance = balance.add(BigDecimal.valueOf(money));
     }
 
+    // subtracts money from balance
     public void subtract(BigDecimal money) {
 
         // checks to see if balance is enough to cover cost
@@ -25,12 +27,13 @@ public class Balance {
         }
     }
 
-    //----------------------------------------------------------------------------------------
     // this method is used after they select "finish transaction", gives back remaining balance
+    //----------------------------------------------------------------------------------------
     public void remaining_Balance() {
 
         BigDecimal current_Balance = balance;
 
+        // prints a change dispenser display
         Displays.change_Display();
 
         //prints out the customer's balance
@@ -41,13 +44,14 @@ public class Balance {
         int dimes_Count = 0;
         int nickels_Count = 0;
 
-        // if the balance is over 0, dispensing coins display will print
+        // if the balance is greater than 0, dispensing coins display will print
         if (balance.compareTo(BigDecimal.valueOf(0)) > 0) {
             Displays.dispensing_Coins();
         }
 
         // subtracts balance by coin value
         subtract_By_Coins(quarters_Count, dimes_Count, nickels_Count);
+
         // at this point, the balance should be at $0.00 and coins are dispensed
 
         /*  if the balance is greater than 0, it will print out finish transaction logs,
@@ -57,7 +61,9 @@ public class Balance {
         }
     }
 
+    // methods used to reduce balance to zero and get counts of coins
     //-------------------------------------------------------------------------------------
+
     // this method subtracts balance by coin value
     public void subtract_By_Coins(int quarters_Count, int dimes_Count, int nickels_Count) {
         // while the balance is first, more than a quarter, it will add a quarter to count, and subtract from balance
@@ -96,8 +102,8 @@ public class Balance {
         }
     }
 
-    // -----------------------------------------------------------------------------------
     // our getters
+    // -----------------------------------------------------------------------------------
     public BigDecimal getBalance() {
         return balance;
     }

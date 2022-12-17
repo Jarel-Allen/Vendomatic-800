@@ -1,7 +1,6 @@
 package com.techelevator.view.menu;
 
 import com.techelevator.view.balance.Balance;
-import com.techelevator.view.exceptions.StringToNumberException;
 import com.techelevator.view.logger.Logs;
 import com.techelevator.view.misc.Displays;
 import com.techelevator.view.misc.ExceptionHandling;
@@ -54,8 +53,9 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
-	//----------------------------------------------------------------------------------------------
+
 	// this is used for the sales report hidden option in main menu
+	//----------------------------------------------------------------------------------------------
 	public Object getChoiceFromOptionsWithSalesReport(Object[] options) {
 		Object choice = null;
 		while (choice == null) {
@@ -75,8 +75,8 @@ public class Menu {
 		out.flush();
 	}
 
-	//-------------------------------------------------------------------------------------------------
 	// using menu user input to add balance to customer
+	//-----------------------------------------------------------------------------------------------
 	public void balance (Balance customer_balance){
 
 		// display of money feeder
@@ -98,8 +98,8 @@ public class Menu {
 		}
 	}
 
-	//--------------------------------------------------------------------------------------------------
 	// used for ID code input
+	//------------------------------------------------------------------------------------------------
 	public String customer_Input () {
 		String userInput = in.nextLine();
 		return userInput.toUpperCase();

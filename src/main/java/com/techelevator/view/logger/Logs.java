@@ -16,6 +16,8 @@ public class Logs extends DateAndTimeFormat {
     public static void transactions_Log(Product item, Balance balance) {
         try(FileOutputStream t_log = new FileOutputStream("Log.txt", true)) {
             String line = getDate_Time() + " | PURCHASED: " + item.getProduct_Name() + " " + item.getSlot_Location() + " $" + item.getProduct_Price() + " $" + balance.getBalance().toString() + "\n";
+
+            // prints out after selected product purchased
             t_log.write(line.getBytes());
         }
         catch (Exception e){
@@ -28,6 +30,8 @@ public class Logs extends DateAndTimeFormat {
     public static void feeders_Log(Balance balance, int money) {
         try(FileOutputStream f_log = new FileOutputStream("Log.txt", true)) {
             String line = getDate_Time() + " | " + "FEED MONEY: $" + money + " $" + balance.getBalance() + "\n";
+
+            // prints out after user feeds money
             f_log.write(line.getBytes());
         }
         catch (Exception e){
@@ -41,6 +45,8 @@ public class Logs extends DateAndTimeFormat {
 
         try(FileOutputStream c_log = new FileOutputStream("Log.txt", true)) {
             String line = getDate_Time() + " | " + "GIVE CHANGE: $" + current_Balance + " $" + balance + "\n";
+
+            // prints out after user finishes all transaction
             c_log.write(line.getBytes());
 
             // this means that the user chose "Finish Transaction" and used for readability
@@ -51,7 +57,7 @@ public class Logs extends DateAndTimeFormat {
         }
     }
 
-    // creates a unique log for sales report
+    // creates a unique log for sales report with date and time
     public static void sales_Report(List<Product> items){
 
         // creating a string to make it easier to .getByte()
@@ -62,7 +68,6 @@ public class Logs extends DateAndTimeFormat {
             // calculates sales amounts
             SalesReportCalculator.sales_Calculations(items, report_Of_Sales);
         }
-
         catch (Exception e){
             ExceptionHandling.salesReportLog_Exception();
         }

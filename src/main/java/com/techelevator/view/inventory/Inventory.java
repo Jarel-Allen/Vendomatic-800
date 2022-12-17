@@ -19,10 +19,9 @@ public class Inventory {
     // global map of products associated to slot location
     public static Map<String, Product> items_Grabber = new HashMap<>();
 
-    // --------------------------------------------------------------------------
-
     // inventory file reader
-    public static void items(String file) {
+    // --------------------------------------------------------------------------
+    public static void data_Reader(String file) {
 
         // reads the file
         File fileInput = new File(file);
@@ -52,10 +51,9 @@ public class Inventory {
         }
     }
 
-    //-------------------------------------------------------------------------------------
-
     // this is a list of items to be displayed in our menus
-    public static void items_List_Display(String choice) {
+    //-------------------------------------------------------------------------------------
+    public static void items_Display(String choice) {
 
         // this is a for loop that goes through every item
         for(Product p : items) {
@@ -102,15 +100,14 @@ public class Inventory {
         System.out.println("Cost: $" + item.getProduct_Price() + "\n");
     }
 
-    //-------------------------------------------------------------------------------
-
     // this is our method when purchasing items
-    public static void item_Purchaser(String choice, Balance balance){
+    //-------------------------------------------------------------------------------
+    public static void item_Selector(String choice, Balance balance){
 
         // if there is a key, then it will calculate balance with cost
 
         if(items_Grabber.get(choice)!=null) {
-            purchase_Item(balance, items_Grabber.get(choice));
+            purchasing_Item(balance, items_Grabber.get(choice));
         }
         else {
             // if the key is null within the map, it will print out a string
@@ -119,7 +116,7 @@ public class Inventory {
     }
 
     // method used to calculate balance and change stock quantity
-    public static void purchase_Item(Balance balance, Product item) {
+    public static void purchasing_Item(Balance balance, Product item) {
 
         // changing the string of item cost to a big decimal
         BigDecimal price_value = BigDecimal.valueOf(Double.parseDouble(item.getProduct_Price()));
@@ -169,8 +166,8 @@ public class Inventory {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------
     // creates a sound for each item
+    //----------------------------------------------------------------------------------------
     public static void soundCheck(Product item) {
         if (item.getProduct_Type().equals("Chip")) {
             // prints out for chips
