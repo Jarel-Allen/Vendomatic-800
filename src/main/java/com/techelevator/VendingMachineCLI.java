@@ -80,6 +80,9 @@ public class VendingMachineCLI {
 				// this is our display sign on top
 				Displays.display_Items_Sign();
 
+				// displays item name and stock
+				Displays.display_Stock_Sign();
+
 				// this is our displayed items as a list
 				Inventory.items_Display(choice);
 
@@ -211,6 +214,9 @@ public class VendingMachineCLI {
 
 			// displays items sign
 			Displays.display_Items_Sign();
+
+			// displays the list for id, item, and cost
+			Displays.display_ID_Sign();
 
 			// displays a list of items with ID and cost
 			Inventory.items_Display(choice);

@@ -1,9 +1,12 @@
 package com.techelevator.view.balance;
 
+import com.techelevator.view.exceptions.TimerException;
 import com.techelevator.view.misc.Displays;
 import com.techelevator.view.logger.Logs;
+import com.techelevator.view.misc.ExceptionHandling;
 
 import java.math.BigDecimal;
+import java.util.concurrent.TimeUnit;
 
 public class Balance {
 
@@ -37,7 +40,7 @@ public class Balance {
         Displays.change_Display();
 
         //prints out the customer's balance
-        System.out.println("\n" + "Returning Total Change Of: $" + balance + "!");
+        System.out.println("\n" + "Total Change Of: $" + balance + "!");
 
         // these are the counts of coins
         int quarters_Count = 0;
@@ -47,6 +50,18 @@ public class Balance {
         // if the balance is greater than 0, dispensing coins display will print
         if (balance.compareTo(BigDecimal.valueOf(0)) > 0) {
             Displays.dispensing_Coins();
+
+            // for a quick dispenser pause...
+            for (int i = 0; i <= 5; i++) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                    System.out.print(" .");
+                    i++;
+                } catch (InterruptedException e) {
+                    ExceptionHandling.Timer_Exception();
+                }
+            }
+            System.out.println();
         }
 
         // subtracts balance by coin value

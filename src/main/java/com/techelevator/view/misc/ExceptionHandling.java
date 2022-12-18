@@ -3,6 +3,7 @@ package com.techelevator.view.misc;
 import com.techelevator.view.exceptions.DataFileNotFoundException;
 import com.techelevator.view.exceptions.LogFileException;
 import com.techelevator.view.exceptions.StringToNumberException;
+import com.techelevator.view.exceptions.TimerException;
 
 import static java.lang.System.exit;
 
@@ -74,6 +75,15 @@ public class ExceptionHandling {
         }
         catch(Exception f){
             throw new LogFileException("FileOutputStream Error");
+        }
+    }
+
+    public static void Timer_Exception(){
+        try {
+            System.out.println("\n" + "An Error Has Occurred with The Timer");
+        }
+        catch(Exception f){
+            throw new TimerException("Console Was Interrupted");
         }
     }
 

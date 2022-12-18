@@ -77,17 +77,18 @@ public class Inventory {
     // displays list of items with stocked quantity
     public static void display_Items_List(Product item) {
 
+        System.out.printf("%-23s %-1s", "[ " + item.getProduct_Name(), " ]");
         // prints out each product name
-        System.out.println("Item: " + item.getProduct_Name());
+//        System.out.println("Item: " + item.getProduct_Name());
 
         // if the quantity of stock is 0, it will print out a string
         if (item.getProduct_Stock_Quantity()==0) {
-            System.out.println("SOLD OUT" + "\n");
+            System.out.println(" SOLD OUT");
         }
 
         // if not, then it will print out the quantity
         else {
-            System.out.println("In-Stock: " + item.getProduct_Stock_Quantity() + "\n");
+            System.out.println("[   " + item.getProduct_Stock_Quantity()+ "   ]");
         }
     }
 
@@ -95,9 +96,7 @@ public class Inventory {
     public static void purchase_Items_List(Product item) {
 
         // prints out the slot location, item name, and item cost
-        System.out.println("ID: " + item.getSlot_Location());
-        System.out.println("Item: " + item.getProduct_Name());
-        System.out.println("Cost: $" + item.getProduct_Price() + "\n");
+        System.out.printf("%-1s %-23s %-1s","[" + item.getSlot_Location() + "]", "[ " + item.getProduct_Name(), "$"+ item.getProduct_Price() + " ]" + "\n");
     }
 
     // this is our method when purchasing items
@@ -166,7 +165,7 @@ public class Inventory {
         }
     }
 
-    // creates a sound for each item
+    // creates a sound for each items
     //----------------------------------------------------------------------------------------
     public static void soundCheck(Product item) {
         if (item.getProduct_Type().equals("Chip")) {

@@ -58,9 +58,12 @@ public class BalanceTest {
         System.out.println("Balance after change: $" + balance.getBalance());
 
         System.out.println();
+        //adds 10 to balance
         balance.add(10);
+        //subtract 4.70 from 10.00
         balance.subtract(BigDecimal.valueOf(4.70).setScale(2));
 
+        //balance should be 5.30 and returns coins
 
         balance.remaining_Balance();
         Assert.assertEquals(BigDecimal.valueOf(0).setScale(2), balance.getBalance());
