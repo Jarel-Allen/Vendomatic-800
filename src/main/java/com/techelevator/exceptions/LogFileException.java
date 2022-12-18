@@ -1,4 +1,4 @@
-package com.techelevator.view.exceptions;
+package com.techelevator.exceptions;
 
 public class LogFileException extends RuntimeException{
 

@@ -1,7 +1,7 @@
-package com.techelevator.view.misc;
+package com.techelevator.misc;
 
-import com.techelevator.view.inventory.Inventory;
-import com.techelevator.view.inventory.Product;
+import com.techelevator.inventory.Inventory;
+import com.techelevator.inventory.Product;
 
 import java.io.FileOutputStream;
 import java.math.BigDecimal;

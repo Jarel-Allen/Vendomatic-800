@@ -1,4 +1,4 @@
-package com.techelevator.view.misc;
+package com.techelevator.misc;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

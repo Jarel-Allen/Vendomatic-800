@@ -1,6 +1,6 @@
 package com.techelevator.view.exceptionsTest;
 
-import com.techelevator.view.exceptions.StringToNumberException;
+import com.techelevator.exceptions.StringToNumberException;
 import org.junit.Test;
 
 public class StringToNumberExceptionTest {

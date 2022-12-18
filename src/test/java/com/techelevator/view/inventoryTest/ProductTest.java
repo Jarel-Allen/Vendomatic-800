@@ -1,6 +1,6 @@
 package com.techelevator.view.inventoryTest;
 
-import com.techelevator.view.inventory.Product;
+import com.techelevator.inventory.Product;
 import org.junit.Assert;
 import org.junit.Test;
 

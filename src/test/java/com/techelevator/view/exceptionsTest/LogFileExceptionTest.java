@@ -1,7 +1,7 @@
 package com.techelevator.view.exceptionsTest;
 
 
-import com.techelevator.view.exceptions.LogFileException;
+import com.techelevator.exceptions.LogFileException;
 import org.junit.Test;
 
 public class LogFileExceptionTest {

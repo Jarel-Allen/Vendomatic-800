@@ -1,9 +1,9 @@
-package com.techelevator.view.misc;
+package com.techelevator.misc;
 
-import com.techelevator.view.exceptions.DataFileNotFoundException;
-import com.techelevator.view.exceptions.LogFileException;
-import com.techelevator.view.exceptions.StringToNumberException;
-import com.techelevator.view.exceptions.TimerException;
+import com.techelevator.exceptions.DataFileNotFoundException;
+import com.techelevator.exceptions.LogFileException;
+import com.techelevator.exceptions.StringToNumberException;
+import com.techelevator.exceptions.TimerException;
 
 import static java.lang.System.exit;
 

@@ -1,10 +1,10 @@
-package com.techelevator.view.inventory;
+package com.techelevator.inventory;
 
-import com.techelevator.view.balance.Balance;
-import com.techelevator.view.misc.Displays;
+import com.techelevator.balance.Balance;
+import com.techelevator.logger.Logs;
+import com.techelevator.misc.Displays;
 import com.techelevator.VendingMachineCLI;
-import com.techelevator.view.logger.Logs;
-import com.techelevator.view.misc.ExceptionHandling;
+import com.techelevator.misc.ExceptionHandling;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,12 +1,12 @@
 package com.techelevator;
 
-import com.techelevator.view.menu.Menu;
-import com.techelevator.view.balance.Balance;
-import com.techelevator.view.datafile.FileCheck;
-import com.techelevator.view.inventory.Inventory;
-import com.techelevator.view.logger.Logs;
-import com.techelevator.view.misc.Displays;
-import com.techelevator.view.misc.SalesReportCalculator;
+import com.techelevator.view.Menu;
+import com.techelevator.balance.Balance;
+import com.techelevator.datafile.FileCheck;
+import com.techelevator.inventory.Inventory;
+import com.techelevator.logger.Logs;
+import com.techelevator.misc.Displays;
+import com.techelevator.misc.SalesReportCalculator;
 
 public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";

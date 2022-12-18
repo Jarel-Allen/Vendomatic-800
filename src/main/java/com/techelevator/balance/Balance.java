@@ -1,9 +1,8 @@
-package com.techelevator.view.balance;
+package com.techelevator.balance;
 
-import com.techelevator.view.exceptions.TimerException;
-import com.techelevator.view.misc.Displays;
-import com.techelevator.view.logger.Logs;
-import com.techelevator.view.misc.ExceptionHandling;
+import com.techelevator.logger.Logs;
+import com.techelevator.misc.Displays;
+import com.techelevator.misc.ExceptionHandling;
 
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;

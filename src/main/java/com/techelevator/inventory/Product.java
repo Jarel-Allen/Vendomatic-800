@@ -1,4 +1,4 @@
-package com.techelevator.view.inventory;
+package com.techelevator.inventory;
 
 public class Product{
 

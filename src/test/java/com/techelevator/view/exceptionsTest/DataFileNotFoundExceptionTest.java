@@ -1,6 +1,6 @@
 package com.techelevator.view.exceptionsTest;
 
-import com.techelevator.view.exceptions.DataFileNotFoundException;
+import com.techelevator.exceptions.DataFileNotFoundException;
 import org.junit.Test;
 
 public class DataFileNotFoundExceptionTest {

@@ -1,4 +1,4 @@
-package com.techelevator.view.misc;
+package com.techelevator.misc;
 
 public class Displays {
     public static void welcome_Sign() {

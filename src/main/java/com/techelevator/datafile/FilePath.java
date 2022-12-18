@@ -1,4 +1,4 @@
-package com.techelevator.view.datafile;
+package com.techelevator.datafile;
 
 public class FilePath {
 

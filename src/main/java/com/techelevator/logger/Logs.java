@@ -1,10 +1,10 @@
-package com.techelevator.view.logger;
+package com.techelevator.logger;
 
-import com.techelevator.view.balance.Balance;
-import com.techelevator.view.misc.DateAndTimeFormat;
-import com.techelevator.view.misc.ExceptionHandling;
-import com.techelevator.view.inventory.Product;
-import com.techelevator.view.misc.SalesReportCalculator;
+import com.techelevator.balance.Balance;
+import com.techelevator.misc.DateAndTimeFormat;
+import com.techelevator.misc.ExceptionHandling;
+import com.techelevator.inventory.Product;
+import com.techelevator.misc.SalesReportCalculator;
 
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
