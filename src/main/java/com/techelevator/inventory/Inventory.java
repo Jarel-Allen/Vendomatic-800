@@ -105,7 +105,7 @@ public class Inventory {
 
         // if there is a key, then it will calculate balance with cost
 
-        if(items_Grabber.get(choice)!=null) {
+        if(items_Grabber.containsKey(choice)) {
             purchasing_Item(balance, items_Grabber.get(choice));
         }
         else {

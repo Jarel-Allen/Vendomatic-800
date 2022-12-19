@@ -12,6 +12,9 @@ public class Product{
     private int product_Stock_Quantity = 5;
     private int product_Purchase_Count = 0;
 
+    // this sets max purchasable count
+    private final int max_Purchase_Count = 5;
+
     // our product/item constructor
     //-----------------------------------------------------------------------------------
     public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
@@ -47,6 +50,9 @@ public class Product{
 
     public int getProduct_Purchase_Count() {
         return product_Purchase_Count;
+    }
+    public int getMax_Purchase_Count() {
+        return max_Purchase_Count;
     }
 
     public String getSlot_Location() {

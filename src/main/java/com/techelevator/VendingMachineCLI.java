@@ -205,12 +205,9 @@ public class VendingMachineCLI {
 		}
 	}
 
-	// our select purchase menu's while loop (within our purchase menu)
+	// our select purchase method (within our purchase menu)
 	// -------------------------------------------------------------------------------------
 	public void select_Purchase(Balance balance, String choice) {
-
-		// while the choice is on select product
-		while (choice.equals(PURCHASE_OPTION_SELECT_PRODUCT)) {
 
 			// displays items sign
 			Displays.display_Items_Sign();
@@ -227,9 +224,6 @@ public class VendingMachineCLI {
 			// this is where customers can input ID code and purchase items
 			Inventory.item_Selector(menu.customer_Input(), balance);
 
-			// goes back to purchase menu
-			break;
-		}
 	}
 
 	// our getters for other while loops

@@ -30,7 +30,7 @@ public class SalesReportCalculator {
                 report_Of_Sales.write(line.getBytes());
 
                 // for every count up to five it adds cost to sales
-                for (int i = 1; i <= 5; i++) {
+                for (int i = 1; i <= p.getMax_Purchase_Count(); i++) {
                     if (p.getProduct_Purchase_Count() >= i){
                         sales = sales.add(BigDecimal.valueOf(Double.parseDouble(p.getProduct_Price())).setScale(2));
                     }

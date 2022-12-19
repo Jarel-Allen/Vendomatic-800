@@ -11,6 +11,10 @@ public class Balance {
 
     // using Big Decimals to set decimal place to match prices
     private BigDecimal balance = BigDecimal.valueOf(0).setScale(2);
+    private final BigDecimal noBalance = BigDecimal.valueOf(0);
+    private final double quarter = 0.25;
+    private final double dime = 0.10;
+    private final double nickel = 0.05;
 
     // our calculators for balance
     // -----------------------------------------------------------------------------------
@@ -47,7 +51,7 @@ public class Balance {
         int nickels_Count = 0;
 
         // if the balance is greater than 0, dispensing coins display will print
-        if (balance.compareTo(BigDecimal.valueOf(0)) > 0) {
+        if (balance.compareTo(noBalance) > 0) {
             Displays.dispensing_Coins();
 
             // for a quick dispenser pause...
@@ -70,7 +74,7 @@ public class Balance {
 
         /*  if the balance is greater than 0, it will print out finish transaction logs,
             preventing blank balances to fill the log  */
-        if (current_Balance.compareTo(BigDecimal.valueOf(0))!=0) {
+        if (current_Balance.compareTo(noBalance)!= 0) {
             Logs.changes_Log(current_Balance, balance);
         }
     }
@@ -81,19 +85,19 @@ public class Balance {
     // this method subtracts balance by coin value
     public void subtract_By_Coins(int quarters_Count, int dimes_Count, int nickels_Count) {
         // while the balance is first, more than a quarter, it will add a quarter to count, and subtract from balance
-        while (balance.compareTo(BigDecimal.valueOf(.25)) >= 0) {
+        while (balance.compareTo(BigDecimal.valueOf(quarter)) >= 0) {
             quarters_Count++;
-            balance = balance.subtract(BigDecimal.valueOf(.25));
+            balance = balance.subtract(BigDecimal.valueOf(quarter));
         }
         // while the balance is second, more than a dime, it will add a dime to count, and subtract from balance
-        while (balance.compareTo(BigDecimal.valueOf(.10)) >= 0) {
+        while (balance.compareTo(BigDecimal.valueOf(dime)) >= 0) {
             dimes_Count++;
-            balance = balance.subtract(BigDecimal.valueOf(.10));
+            balance = balance.subtract(BigDecimal.valueOf(dime));
         }
         // while the balance is third, more than a nickel, it will add a nickel to count, and subtract from balance
-        while (balance.compareTo(BigDecimal.valueOf(.05)) >= 0) {
+        while (balance.compareTo(BigDecimal.valueOf(nickel)) >= 0) {
             nickels_Count++;
-            balance = balance.subtract(BigDecimal.valueOf(.05));
+            balance = balance.subtract(BigDecimal.valueOf(nickel));
         }
 
         // prints out coin if count is greater than 0
