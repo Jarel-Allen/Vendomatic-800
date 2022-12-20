@@ -16,6 +16,8 @@ public class Balance {
     private final double dime = 0.10;
     private final double nickel = 0.05;
 
+    private final int delay = 5;
+
     // our calculators for balance
     // -----------------------------------------------------------------------------------
 
@@ -55,7 +57,7 @@ public class Balance {
             Displays.dispensing_Coins();
 
             // for a quick dispenser pause...
-            for (int i = 0; i <= 5; i++) {
+            for (int i = 0; i <= delay; i++) {
                 try {
                     TimeUnit.SECONDS.sleep(1);
                     System.out.print(" .");
