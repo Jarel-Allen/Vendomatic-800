@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FileCheck extends FilePath {
+
     // this is our file reader before running the virtual vending machine
     public FileCheck() {
         File dataFile = new File(getFile());

@@ -18,7 +18,7 @@ public class InventoryTest {
         Map<String, Product> items_Grabber = new HashMap<>();
 
         Inventory.data_Reader("test.txt");
-        for (Product item : Inventory.items) {
+        for (Product item : Inventory.items_Grabber.values()) {
             items.add(item);
             items_Grabber.put(item.getSlot_Location(), item);
         }
@@ -36,10 +36,5 @@ public class InventoryTest {
             Assert.assertEquals("Name" + i, items_Grabber.get("A" + i).getProduct_Name());
             System.out.print(items_Grabber.get("A" + i).getProduct_Name()+ ", ");
         }
-
-        System.out.println("= List of Product Type =");
-        // testing the product type of the list of products
-        Assert.assertEquals("Chip",items.get(0).getProduct_Type());
-        Assert.assertEquals("return back2",items.get(1).getProduct_Type());
     }
 }

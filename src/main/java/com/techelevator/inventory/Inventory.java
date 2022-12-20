@@ -1,6 +1,10 @@
 package com.techelevator.inventory;
 
 import com.techelevator.balance.Balance;
+import com.techelevator.inventory.types.Candy;
+import com.techelevator.inventory.types.Chip;
+import com.techelevator.inventory.types.Drink;
+import com.techelevator.inventory.types.Gum;
 import com.techelevator.logger.Logs;
 import com.techelevator.misc.Displays;
 import com.techelevator.VendingMachineCLI;
@@ -13,11 +17,8 @@ import java.util.*;
 
 public class Inventory {
 
-    // global list of items by product
-    public static List<Product> items = new ArrayList<>();
-
     // global map of products associated to slot location
-    public static Map<String, Product> items_Grabber = new HashMap<>();
+    public static Map<String, Product> items_Grabber = new TreeMap<>();
 
     // inventory file reader
     // --------------------------------------------------------------------------
@@ -35,14 +36,31 @@ public class Inventory {
                 // creates a list of arrays of a string that is split by a pipe "|"
                 List<String> product_Info = Arrays.asList(dataInput.nextLine().split("\\|"));
 
-                // creating a new product object for each line
-                Product product = new Product(product_Info.get(0), product_Info.get(1), product_Info.get(2), product_Info.get(3));
+                // creating variables with names
+                String id_Slot = product_Info.get(0);
+                String product_Name = product_Info.get(1);
+                String product_Price = product_Info.get(2);
+                String product_Type = product_Info.get(3);
 
-                // adds product to the list of items
-                items.add(product);
+                // creates new object by type
+                if (product_Type.equals("Chip")) {
+                    items_Grabber.put(id_Slot, new Chip(id_Slot, product_Name, product_Price));
+                }
+
+                else if (product_Type.equals("Candy")) {
+                    items_Grabber.put(id_Slot, new Candy(id_Slot, product_Name, product_Price));
+                }
+
+                else if (product_Type.equals("Drink")) {
+                    items_Grabber.put(id_Slot, new Drink(id_Slot, product_Name, product_Price));
+                }
+
+                else if (product_Type.equals("Gum")) {
+                    items_Grabber.put(id_Slot, new Gum(id_Slot, product_Name, product_Price));
+                }
 
                 // adds slot location as key, and then product as the value into a map called items grabber
-                items_Grabber.put(product_Info.get(0), product);
+//                items_Grabber.put(id_Slot, product);
             }
 
             // if the file does not have a path, it will catch the error and print out a string
@@ -56,7 +74,7 @@ public class Inventory {
     public static void items_Display(String choice) {
 
         // this is a for loop that goes through every item
-        for(Product p : items) {
+        for(Product p : items_Grabber.values()) {
 
             // if choice is on display items, it will print out item name/stock amount
             if(choice.equals(VendingMachineCLI.getMainMenuOptionDisplayItems())) {
@@ -95,8 +113,15 @@ public class Inventory {
     // displays purchasable items with IDs and prices
     public static void purchase_Items_List(Product item) {
 
+        // prints sold out when out of stock
+        if (item.getProduct_Stock_Quantity()==0) {
+            System.out.printf("%-1s %-28s %-1s","[" + item.getSlot_Location() + "]", "[ " + "Sold Out", /*"$"+ item.getProduct_Price() */ " ]" + "\n");
+
+        }
         // prints out the slot location, item name, and item cost
-        System.out.printf("%-1s %-23s %-1s","[" + item.getSlot_Location() + "]", "[ " + item.getProduct_Name(), "$"+ item.getProduct_Price() + " ]" + "\n");
+        else {
+            System.out.printf("%-1s %-23s %-1s","[" + item.getSlot_Location() + "]", "[ " + item.getProduct_Name(), "$"+ item.getProduct_Price() + " ]" + "\n");
+        }
     }
 
     // this is our method when purchasing items
@@ -153,8 +178,8 @@ public class Inventory {
             System.out.println("Cost: $" + item.getProduct_Price());
             System.out.println("Remaining Balance: $"+ balance.getBalance());
 
-            // prints out sound by type of item
-            soundCheck(item);
+            // prints out sound and image by type of item
+            System.out.println("\n" + item.image() + " " + item.sound());
 
             // creates a transaction log to our log.txt
             Logs.transactions_Log(item, balance);
@@ -164,30 +189,5 @@ public class Inventory {
             System.out.println("\n" + "You are short of $" + price_value.subtract(balance.getBalance()) + ". Feed More Money!");
         }
     }
-
-    // creates a sound for each items
-    //----------------------------------------------------------------------------------------
-    public static void soundCheck(Product item) {
-        if (item.getProduct_Type().equals("Chip")) {
-            // prints out for chips
-            System.out.println("\n" + "Crunch Crunch, Yum!");
-        }
-
-        else if (item.getProduct_Type().equals("Candy")) {
-            // prints out for candy
-            System.out.println("\n" + "Munch Munch, Yum!");
-        }
-
-        else if (item.getProduct_Type().equals("Drink")) {
-            // prints our for drinks
-            System.out.println("\n" + "Glug Glug, Yum!");
-        }
-
-        else if (item.getProduct_Type().equals("Gum")) {
-            // prints out for gum
-            System.out.println("\n" + "Chew Chew, Yum!");
-        }
-    }
-
 }
 

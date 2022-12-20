@@ -1,11 +1,11 @@
 package com.techelevator.inventory;
+public abstract class Product{
 
-public class Product{
-
+    // encapsulated variables
+    //----------------------------------------------------------------------------------
     private String slot_Location;
     private String product_Name;
     private String product_Price;
-    private String product_Type;
 
     // stock counts for each item
     //-----------------------------------------------------------------------------------
@@ -17,15 +17,15 @@ public class Product{
 
     // our product/item constructor
     //-----------------------------------------------------------------------------------
-    public Product(String slot_Location, String product_Name, String product_Price, String product_Type) {
+    public Product(String slot_Location, String product_Name, String product_Price) {
         this.slot_Location = slot_Location;
         this.product_Name = product_Name;
         this.product_Price = product_Price;
-        this.product_Type = product_Type;
     }
 
-    // this method removes one item stock per purchase
+    // stock removal and purchase count addition
     //-----------------------------------------------------------------------------------
+    // this method removes one item stock per purchase
     public int remove_Stock() {
 
         if (product_Stock_Quantity > 0) {
@@ -67,13 +67,14 @@ public class Product{
         return product_Price;
     }
 
-    public String getProduct_Type() {
-        return product_Type;
-    }
-
     // our setter to keep every sales report unique purchases
     //---------------------------------------------------------------------------------------
     public void setProduct_Purchase_Count(int product_Purchase_Count) {
         this.product_Purchase_Count = product_Purchase_Count;
     }
+
+    // creating abstract class
+    public abstract String sound();
+
+    public abstract String image();
 }

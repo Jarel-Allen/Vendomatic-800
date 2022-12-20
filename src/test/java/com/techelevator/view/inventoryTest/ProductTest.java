@@ -1,6 +1,7 @@
 package com.techelevator.view.inventoryTest;
 
 import com.techelevator.inventory.Product;
+import com.techelevator.inventory.types.Candy;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ public class ProductTest {
 
     @Test
     public void product_remove_A1_Test(){
-        Product product = new Product("A1", "Item1", "1.00", "Type1");
+        Product product = new Candy("A1", "Item1", "1.00");
         product.remove_Stock();
         Assert.assertEquals(4, product.getProduct_Stock_Quantity());
 
@@ -31,7 +32,7 @@ public class ProductTest {
 
     @Test
     public void product_add_Test(){
-        Product product = new Product("A1", "Item1", "1.00", "Type1");
+        Product product = new Candy("A1", "Item1", "1.00");
         product.add_PurchaseCount();
         Assert.assertEquals(1, product.getProduct_Purchase_Count());
 

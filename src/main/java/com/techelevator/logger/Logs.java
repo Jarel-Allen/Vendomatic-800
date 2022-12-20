@@ -1,6 +1,7 @@
 package com.techelevator.logger;
 
 import com.techelevator.balance.Balance;
+import com.techelevator.inventory.Inventory;
 import com.techelevator.misc.DateAndTimeFormat;
 import com.techelevator.misc.ExceptionHandling;
 import com.techelevator.inventory.Product;
@@ -58,7 +59,7 @@ public class Logs extends DateAndTimeFormat {
     }
 
     // creates a unique log for sales report with date and time
-    public static void sales_Report(List<Product> items){
+    public static void sales_Report(){
 
         // creating a string to make it easier to .getByte()
         String s_Report_File = "Sales Report " + getFile_Date_Time() + ".txt";
@@ -66,7 +67,7 @@ public class Logs extends DateAndTimeFormat {
         try(FileOutputStream report_Of_Sales = new FileOutputStream(s_Report_File, true)) {
 
             // calculates sales amounts
-            SalesReportCalculator.sales_Calculations(items, report_Of_Sales);
+            SalesReportCalculator.sales_Calculations(report_Of_Sales);
         }
         catch (Exception e){
             ExceptionHandling.salesReportLog_Exception();

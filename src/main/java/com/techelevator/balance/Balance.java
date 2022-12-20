@@ -11,11 +11,16 @@ public class Balance {
 
     // using Big Decimals to set decimal place to match prices
     private BigDecimal balance = BigDecimal.valueOf(0).setScale(2);
+
+    // used when comparing to zero
     private final BigDecimal noBalance = BigDecimal.valueOf(0);
+
+    // values of each coin
     private final double quarter = 0.25;
     private final double dime = 0.10;
     private final double nickel = 0.05;
 
+    // for the delay loop
     private final int delay = 5;
 
     // our calculators for balance
@@ -86,16 +91,19 @@ public class Balance {
 
     // this method subtracts balance by coin value
     public void subtract_By_Coins(int quarters_Count, int dimes_Count, int nickels_Count) {
+
         // while the balance is first, more than a quarter, it will add a quarter to count, and subtract from balance
         while (balance.compareTo(BigDecimal.valueOf(quarter)) >= 0) {
             quarters_Count++;
             balance = balance.subtract(BigDecimal.valueOf(quarter));
         }
+
         // while the balance is second, more than a dime, it will add a dime to count, and subtract from balance
         while (balance.compareTo(BigDecimal.valueOf(dime)) >= 0) {
             dimes_Count++;
             balance = balance.subtract(BigDecimal.valueOf(dime));
         }
+
         // while the balance is third, more than a nickel, it will add a nickel to count, and subtract from balance
         while (balance.compareTo(BigDecimal.valueOf(nickel)) >= 0) {
             nickels_Count++;
@@ -108,14 +116,17 @@ public class Balance {
 
     // this method will print out coins if the count is greater than 0
     public void coin_Dispenser(int quarters_Count, int dimes_Count, int nickels_Count) {
+
         // this prints out the count of quarters, if any
         if (quarters_Count > 0){
             System.out.println(quarters_Count + " Quarter(s)");
         }
+
         // this prints out the count of dimes, if any
         if (dimes_Count > 0) {
             System.out.println(dimes_Count + " Dime(s)");
         }
+
         // this prints out the count of nickels, if any
         if (nickels_Count > 0) {
             System.out.println(nickels_Count + " Nickel(s)");

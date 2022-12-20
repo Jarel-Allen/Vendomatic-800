@@ -5,12 +5,11 @@ import com.techelevator.inventory.Product;
 
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
-import java.util.List;
 
 public class SalesReportCalculator {
 
     // does calculations to print out sales amounts
-    public static void sales_Calculations(List<Product> items, FileOutputStream report_Of_Sales) {
+    public static void sales_Calculations(FileOutputStream report_Of_Sales) {
         try {
             // collects all purchased items' costs
             BigDecimal sales = BigDecimal.valueOf(0).setScale(2);
@@ -19,10 +18,12 @@ public class SalesReportCalculator {
             String indent = "                    ";
 
             // for every product of the list
-            for (Product p : items) {
+            for (Product p : Inventory.items_Grabber.values()) {
+
                 // each product has an indent
                 String item_Name = p.getProduct_Name();
                 item_Name += indent.substring(0, indent.length() - p.getProduct_Name().length());
+
                 // prints out product name and purchase count
                 String line = item_Name + "| " + p.getProduct_Purchase_Count() + "\n";
 
@@ -50,7 +51,7 @@ public class SalesReportCalculator {
 
     // sets the sold item counts back to 0
     public static void set_To_Zero () {
-        for (Product p : Inventory.items) {
+        for (Product p : Inventory.items_Grabber.values()) {
             p.setProduct_Purchase_Count(0);
         }
     }

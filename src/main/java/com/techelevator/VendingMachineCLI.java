@@ -111,7 +111,7 @@ public class VendingMachineCLI {
 			else if (choice.equals(MAIN_MENU_OPTION_SALES_REPORT)) {
 
 				// creates a log for sales report
-				Logs.sales_Report(Inventory.items);
+				Logs.sales_Report();
 
 				// sets purchase count back to 0
 				SalesReportCalculator.set_To_Zero();
