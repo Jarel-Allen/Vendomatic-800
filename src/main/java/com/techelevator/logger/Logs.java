@@ -1,7 +1,6 @@
 package com.techelevator.logger;
 
 import com.techelevator.balance.Balance;
-import com.techelevator.inventory.Inventory;
 import com.techelevator.misc.DateAndTimeFormat;
 import com.techelevator.misc.ExceptionHandling;
 import com.techelevator.inventory.Product;
@@ -9,7 +8,6 @@ import com.techelevator.misc.SalesReportCalculator;
 
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Logs extends DateAndTimeFormat {
 

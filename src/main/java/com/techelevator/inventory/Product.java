@@ -12,7 +12,7 @@ public abstract class Product{
     private int product_Stock_Quantity = 5;
     private int product_Purchase_Count = 0;
 
-    // this sets max purchasable count
+    // this is max purchasable count
     private final int max_Purchase_Count = 5;
 
     // our product/item constructor

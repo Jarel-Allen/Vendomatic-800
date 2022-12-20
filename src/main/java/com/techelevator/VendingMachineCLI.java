@@ -87,14 +87,14 @@ public class VendingMachineCLI {
 				Inventory.items_Display(choice);
 
 				// this is our display menu options
-				display(customer_Balance, choice);
+				display(customer_Balance);
 			}
 
 			// if choice is on purchase
 			else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 
 				// this is our purchase menu options
-				purchase(customer_Balance, choice);
+				purchase(customer_Balance);
 			}
 
 			// if choice is on exit
@@ -132,10 +132,7 @@ public class VendingMachineCLI {
 
 	// this is our display items menu's while loop
 	//-------------------------------------------------------------------------------------
-	public void display(Balance balance, String choice) {
-
-		// while it's in the display item option
-		while(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
+	public void display(Balance balance) {
 
 			// our display menu
 			String display_choice = (String) menu.getChoiceFromOptions(DISPLAY_ITEMS_OPTIONS);
@@ -144,10 +141,8 @@ public class VendingMachineCLI {
 			if(display_choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 
 				// goes into purchase menu
-				purchase(balance, display_choice);
+				purchase(balance);
 
-				//this break goes to main menu after purchase is done
-				break;
 			}
 
 			// checks to see if new choice is in main menu
@@ -155,19 +150,15 @@ public class VendingMachineCLI {
 
 				// prints out main menu display
 				Displays.main_Menu();
-
-				// goes back to main menu
-				break;
-			}
 		}
 	}
 
 	// this is our purchase menu's while loop
 	//-------------------------------------------------------------------------------------
-	public void purchase(Balance balance, String choice) {
+	public void purchase(Balance balance) {
 
 		// while the choice is the purchase option
-		while(choice.equals(MAIN_MENU_OPTION_PURCHASE)){
+		while(true){
 
 			// our purchase display menu on top
 			Displays.purchase_Menu();
@@ -175,10 +166,11 @@ public class VendingMachineCLI {
 			// prints out current balance
 			System.out.println("\n"+"Current Money Provided: $" + balance.getBalance());
 
-			// our purchase menu options
-			String purchase_choice = (String) menu.getChoiceFromOptions(PURCHASE_OPTIONS);
+		// our purchase menu options
+		String purchase_choice = (String) menu.getChoiceFromOptions(PURCHASE_OPTIONS);
 
-			// checks if option is feed money
+
+		// checks if option is feed money
 			if(purchase_choice.equals(PURCHASE_OPTION_FEED_MONEY)) {
 
 				// allows customer to enter an amount

@@ -9,9 +9,8 @@ import static java.lang.System.exit;
 
 public class ExceptionHandling {
 
-
-    //----------------------------------------------------------------------------------------------
     // this will print out and exit the program, if that fails, then it will print custom exception
+    //----------------------------------------------------------------------------------------------
     public static void fileException() {
         try {
             System.out.println("\n" + "File Not Found.");
@@ -22,10 +21,8 @@ public class ExceptionHandling {
         }
     }
 
-//-----------------------------------------------------------------------------------------------------
     // exception handling for parsing a user input
-
-    // try to print string, if not, it will print out custom exception
+    //-----------------------------------------------------------------------------------------------------
     public static void parseInt_Exception() {
         try {
             System.out.println("\n"+"Please Enter a Whole Number (Without A Decimal).");
@@ -35,9 +32,8 @@ public class ExceptionHandling {
         }
     }
 
-//-----------------------------------------------------------------------------------------------------
     // this is where our try catch blocks are when an error in creating a file
-
+    //-----------------------------------------------------------------------------------------------------
     // transaction error exception
     public static void transactionLog_Exception(){
         try {
@@ -78,6 +74,7 @@ public class ExceptionHandling {
         }
     }
 
+    // timer error exception
     public static void Timer_Exception(){
         try {
             System.out.println("\n" + "An Error Has Occurred with The Timer");

@@ -42,22 +42,8 @@ public class Inventory {
                 String product_Price = product_Info.get(2);
                 String product_Type = product_Info.get(3);
 
-                // creates new object by type
-                if (product_Type.equals("Chip")) {
-                    items_Grabber.put(id_Slot, new Chip(id_Slot, product_Name, product_Price));
-                }
-
-                else if (product_Type.equals("Candy")) {
-                    items_Grabber.put(id_Slot, new Candy(id_Slot, product_Name, product_Price));
-                }
-
-                else if (product_Type.equals("Drink")) {
-                    items_Grabber.put(id_Slot, new Drink(id_Slot, product_Name, product_Price));
-                }
-
-                else if (product_Type.equals("Gum")) {
-                    items_Grabber.put(id_Slot, new Gum(id_Slot, product_Name, product_Price));
-                }
+                // creates new objects by type
+                object_Type_create(product_Type, id_Slot, product_Name, product_Price);
 
                 // adds slot location as key, and then product as the value into a map called items grabber
 //                items_Grabber.put(id_Slot, product);
@@ -69,7 +55,28 @@ public class Inventory {
         }
     }
 
-    // this is a list of items to be displayed in our menus
+    // object creator
+    //----------------------------------------------------------------------------------
+    public static void object_Type_create(String product_Type, String id_Slot, String product_Name, String product_Price) {
+        // creates new chip object
+        if (product_Type.equals("Chip")) {
+            items_Grabber.put(id_Slot, new Chip(id_Slot, product_Name, product_Price));
+        }
+        // creates new candy object
+        else if (product_Type.equals("Candy")) {
+            items_Grabber.put(id_Slot, new Candy(id_Slot, product_Name, product_Price));
+        }
+        // creates new drink object
+        else if (product_Type.equals("Drink")) {
+            items_Grabber.put(id_Slot, new Drink(id_Slot, product_Name, product_Price));
+        }
+        // creates new gum object
+        else if (product_Type.equals("Gum")) {
+            items_Grabber.put(id_Slot, new Gum(id_Slot, product_Name, product_Price));
+        }
+    }
+
+    // Item Display Lists for Display Items/Select Purchase
     //-------------------------------------------------------------------------------------
     public static void items_Display(String choice) {
 
@@ -116,8 +123,8 @@ public class Inventory {
         // prints sold out when out of stock
         if (item.getProduct_Stock_Quantity()==0) {
             System.out.printf("%-1s %-28s %-1s","[" + item.getSlot_Location() + "]", "[ " + "Sold Out", /*"$"+ item.getProduct_Price() */ " ]" + "\n");
-
         }
+
         // prints out the slot location, item name, and item cost
         else {
             System.out.printf("%-1s %-23s %-1s","[" + item.getSlot_Location() + "]", "[ " + item.getProduct_Name(), "$"+ item.getProduct_Price() + " ]" + "\n");
@@ -129,12 +136,12 @@ public class Inventory {
     public static void item_Selector(String choice, Balance balance){
 
         // if there is a key, then it will calculate balance with cost
-
         if(items_Grabber.containsKey(choice)) {
             purchasing_Item(balance, items_Grabber.get(choice));
         }
+
+        // if the key is null within the map, it will print out a string
         else {
-            // if the key is null within the map, it will print out a string
             System.out.println("\n" + "ID Code: [" + choice + "] Does Not Exist!");
         }
     }
@@ -184,6 +191,7 @@ public class Inventory {
             // creates a transaction log to our log.txt
             Logs.transactions_Log(item, balance);
         }
+
         // if there is not enough money, prints message
         else {
             System.out.println("\n" + "You are short of $" + price_value.subtract(balance.getBalance()) + ". Feed More Money!");
